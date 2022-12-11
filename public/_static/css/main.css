@@ -29,7 +29,7 @@ body {
   top: 7rem;
   left: 50%;
   margin-left: -3.5rem;
-  background-image: url(./../profile.png);
+  background-image: url(./../profile.webp);
   position: absolute;
   background-repeat: round;
   border: .2rem solid #EEE;
