@@ -1,0 +1,107 @@
+.browsehappy {
+  margin: .2em 0;
+  background: #ccc;
+  color: #000;
+  padding: .2em 0
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url(./../bg.jpg)
+}
+
+.footer,
+.header {
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.header {
+  height: 10rem;
+  background-color: rgba(255, 255, 255, .3)
+}
+
+.header::after {
+  content: '';
+  width: 7rem;
+  height: 7rem;
+  top: 7rem;
+  left: 50%;
+  margin-left: -3.5rem;
+  background-image: url(./../profile.png);
+  position: absolute;
+  background-repeat: round;
+  border: .2rem solid #EEE;
+  border-radius: 50%
+}
+
+.wrapper {
+  margin: 2rem
+}
+
+.container {
+  background-color: rgba(255, 255, 255, .8);
+  color: #434343;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  border-radius: .4rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  text-align: center;
+  max-width: 768px
+}
+
+.container-title {
+  margin-top: 6rem
+}
+
+.tool {
+  width: 1.5rem;
+  display: inline;
+  margin: 0;
+  position: absolute;
+  padding-left: .5rem
+}
+
+.social-list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0
+}
+
+.social-icon {
+  width: 5rem;
+  padding: 0 3rem
+}
+
+.social-icon:hover {
+  opacity: .7
+}
+
+.social-icon:active {
+  opacity: .9
+}
+
+.link {
+  text-decoration: none;
+  color: #2a509a
+}
+
+@media screen and (max-width:768px) {
+  .social-icon {
+    padding: 0 1rem
+  }
+}
+
+@media screen and (max-width:480px) {
+  .social-icon {
+    width: 3rem
+  }
+}
