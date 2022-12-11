@@ -36,32 +36,53 @@ body {
   border-radius: 50%
 }
 
-.wrapper {
+.gradient-text {
+  background: -webkit-linear-gradient(-20deg, #6e45e2 0%, #14822d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message>p {
+  margin: .25rem 0;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.heart {
+  -webkit-text-fill-color: red;
+}
+
+.main {
   margin: 2rem
 }
 
 .container {
   background-color: rgba(255, 255, 255, .8);
-  color: #434343;
+  background-image: linear-gradient(300deg, #ffffff 0%, #8fcafc 100%);
   margin: 2rem auto 0;
   padding: 1.5rem;
-  border-radius: .4rem;
-  font-family: Montserrat, sans-serif;
-  font-weight: 800;
+  border-radius: 0.4rem;
+  font-family: monospace;
+  font-weight: 500;
   text-align: center;
-  max-width: 768px
+  max-width: 768px;
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
 }
 
 .container-title {
   margin-top: 6rem
-}
-
-.tool {
-  width: 1.5rem;
-  display: inline;
-  margin: 0;
-  position: absolute;
-  padding-left: .5rem
 }
 
 .social-list {
@@ -73,11 +94,11 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 .social-icon {
-  width: 5rem;
+  width: 3rem;
   padding: 0 3rem
 }
 
@@ -91,7 +112,8 @@ body {
 
 .link {
   text-decoration: none;
-  color: #2a509a
+  color: #2a509a;
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width:768px) {
@@ -104,4 +126,9 @@ body {
   .social-icon {
     width: 3rem
   }
+
+  /* .social-list {
+    display: flex;
+    flex-direction: column;
+  } */
 }
