@@ -8,6 +8,7 @@ import { Hero } from "@/shared/components/Hero";
 import { ExperienceTimeline } from "@/shared/components/ExperienceTimeline";
 import { SkillsAndEducation } from "@/shared/components/SkillsAndEducation";
 import { ProjectsSection } from "@/shared/components/ProjectsSection";
+import { CopyEmailButton } from "@/shared/components/CopyEmailButton";
 import { PROFILE } from "@/domain/profile";
 import {
   EnvelopeSimple,
@@ -36,7 +37,7 @@ export default function Home() {
           <div className="max-w-2xl space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <EnvelopeSimple size={18} className="text-muted-foreground" />
-              <Typography.Subtle className="font-mono uppercase tracking-widest text-[11px] text-muted-foreground">
+              <Typography.Subtle className="font-mono uppercase tracking-widest text-xs text-muted-foreground">
                 Direct Communication
               </Typography.Subtle>
             </div>
@@ -49,12 +50,13 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
+            <CopyEmailButton variant="primary" size="md" />
             <Button
-              variant="primary"
+              variant="outline"
               href={`mailto:${PROFILE.email}`}
-              leftIcon={<EnvelopeSimple size={18} />}
+              leftIcon={<EnvelopeSimple size={16} />}
             >
-              {PROFILE.email}
+              Open in Mail
             </Button>
             <Button
               variant="secondary"

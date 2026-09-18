@@ -27,7 +27,7 @@ export const PROFILE = {
   },
   currentRole: {
     company: "Autodesk",
-    team: "Fusion360, CI Team",
+    team: "Fusion, CI Team",
     title: "Sr. Full Stack Engineer",
     since: "May 2023",
   },

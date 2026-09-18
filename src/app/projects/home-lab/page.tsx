@@ -2,80 +2,73 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/shared/components/Container";
 import { Typography } from "@/shared/components/Typography";
-import { Badge } from "@/shared/components/Badge";
 import { Button } from "@/shared/components/Button";
-import { Card, CardTitle } from "@/shared/components/Card";
 import {
   ArrowLeft,
-  HardDrives,
-  ShieldCheck,
   Terminal,
-  ArrowsClockwise,
-  ChartLineUp,
-  Robot,
+  ShieldCheck,
+  HardDrives,
 } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
-  title: "Self-Hosted NAS & Private Cloud Showcase — Javier García González",
+  title: "Self-Hosted NAS & Private Cloud — Javier García González",
   description:
     "Technical deep dive into a 24/7 automated NAS and private cloud managed 100% via Ansible Infrastructure-as-Code.",
 };
 
-const ANSIBLE_ROLES_HIGHLIGHT = [
-  { name: "zfs", desc: "ZFS redundant storage pools, automated scrubbing & snapshot policies" },
-  { name: "tailscale / wireguard", desc: "Encrypted mesh network VPN with zero public inbound ports" },
-  { name: "authelia & caddy", desc: "Reverse proxy, automated Let's Encrypt SSL, and 2FA SSO authentication" },
-  { name: "ollama & open-webui", desc: "Self-hosted local LLM runtime for private AI inference" },
-  { name: "prometheus & grafana", desc: "Node exporter, cAdvisor, and real-time hardware telemetry" },
-  { name: "kopia_backup", desc: "Deduplicated, client-side encrypted automated off-site backups" },
-  { name: "nextcloud", desc: "Private files, contact & calendar synchronization" },
-  { name: "n8n", desc: "Self-hosted workflow automations and webhook event routing" },
+const ANSIBLE_ROLES = [
+  { name: "roles/zfs", scope: "Storage", desc: "ZFS RAIDZ pools, automated scheduled scrubbing, and pool health verification" },
+  { name: "roles/tailscale", scope: "Networking", desc: "Mesh VPN routing with zero inbound public router ports required" },
+  { name: "roles/wireguard", scope: "Networking", desc: "Encrypted point-to-point network tunnels for dedicated peer links" },
+  { name: "roles/caddy_authelia", scope: "Security & SSO", desc: "Reverse proxy, automated Let's Encrypt TLS, and 2FA multi-factor authentication" },
+  { name: "roles/ollama_ai", scope: "Local AI", desc: "Self-hosted local LLM runtime with Open-WebUI for private inference" },
+  { name: "roles/kopia_backup", scope: "Backup", desc: "Client-side encrypted, content-addressed deduplicated off-site snapshot backups" },
+  { name: "roles/telemetry", scope: "Observability", desc: "Prometheus, Node Exporter, and cAdvisor feeding real-time Grafana dashboards" },
+  { name: "roles/nextcloud", scope: "Productivity", desc: "Private files, contact books, and calendar synchronization infrastructure" },
+  { name: "roles/n8n", scope: "Automation", desc: "Self-hosted event routing, webhook web listeners, and cron task orchestrations" },
 ];
 
 export default function HomeLabShowcasePage() {
   return (
-    <main className="py-12 sm:py-20 space-y-16">
-      <Container size="xl">
+    <main className="py-12 sm:py-20">
+      <Container size="xl" className="space-y-16">
         {/* Navigation Breadcrumb */}
-        <div className="mb-8">
+        <div>
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft size={14} />
-            <span>Back to Portfolio</span>
+            <span>Back to portfolio</span>
           </Link>
         </div>
 
         {/* Project Header */}
-        <div className="space-y-6 max-w-3xl border-b border-border/80 pb-12">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="dot" dotColor="blue">
-              Self-Hosted Lab (24/7)
-            </Badge>
-            <Badge variant="default">Solo Project</Badge>
-            <Badge variant="outline">Ansible Infrastructure as Code</Badge>
+        <div className="space-y-6 max-w-3xl pb-10 border-b border-border/60">
+          <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+            <span className="h-2 w-2 rounded-full bg-sky-500" />
+            <span>Self-Hosted Production &middot; 24/7 Bare Metal</span>
           </div>
 
           <div className="space-y-2">
-            <Typography.H1 className="text-4xl sm:text-6xl font-bold tracking-tight">
+            <Typography.H1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
               Self-Hosted NAS &amp; Private Cloud
             </Typography.H1>
-            <p className="text-xl sm:text-2xl font-medium text-foreground/90 tracking-tight">
-              Bare-metal infrastructure automated end-to-end via Ansible playbooks.
+            <p className="text-xl sm:text-2xl font-semibold text-foreground/90 tracking-tight">
+              Bare-metal infrastructure automated 100% via Ansible playbooks.
             </p>
           </div>
 
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            A dedicated, 24/7 low-power private cloud and NAS serving as both production storage and an experimental systems sandbox. Built on the core principle that true software engineering extends down through container virtualization, network routing, and bare-metal hardware.
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-sans">
+            A dedicated, 24/7 low-power private cloud serving as personal production storage, CI runner host, and systems playground. Built on the principle that senior software engineering competence extends through container virtualization, network routing, and bare-metal hardware.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <Button
               variant="primary"
               href="/#contact"
             >
-              Discuss Infrastructure &amp; DevOps
+              Discuss Infrastructure &amp; Systems
             </Button>
             <Button
               variant="secondary"
@@ -86,111 +79,109 @@ export default function HomeLabShowcasePage() {
           </div>
         </div>
 
-        {/* Key Architectural Pillars */}
-        <div className="pt-12 space-y-16">
-          <div className="space-y-4">
-            <Typography.Subtle className="font-mono uppercase tracking-widest text-[11px] text-muted-foreground">
-              Architecture &amp; Security
-            </Typography.Subtle>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold">
-              Engineering Principles &amp; System Capabilities
+        {/* Section 1: Infrastructure as Code */}
+        <section className="space-y-6 pb-12 border-b border-border/60">
+          <div className="space-y-1 max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
+              <Terminal size={16} className="text-sky-500" />
+              <span>Architectural Principle 01</span>
+            </div>
+            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Codified Automation &amp; Zero Configuration Drift
             </Typography.H2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="bg-surface/60 border-border p-6 space-y-4">
-              <div className="p-2.5 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit">
-                <Terminal size={24} />
-              </div>
-              <CardTitle className="text-lg font-bold">100% Infrastructure as Code</CardTitle>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Managed by a dedicated Ansible repository (`nas-services`) containing 40+ modular roles. Server provisioning, Docker configurations, and security policies are version-controlled in Git.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sm sm:text-base text-muted-foreground leading-relaxed font-sans">
+            <div className="lg:col-span-6 space-y-4">
+              <p>
+                Every service, container network, and system configuration is defined in the private <code className="text-xs font-mono text-foreground bg-muted px-1.5 py-0.5 rounded">nas-services</code> repository containing over 40 modular Ansible roles.
               </p>
-            </Card>
+              <p>
+                No manual SSH tinkering or unrecorded system edits exist on the machine. Running the main playbook ensures complete idempotency—rebuilding the host from a clean OS install to full operational capability in minutes.
+              </p>
+            </div>
+            <div className="lg:col-span-6 space-y-4">
+              <p>
+                Sensitive keys, credentials, and Tailscale pre-auth tokens are encrypted at rest using <strong className="text-foreground font-semibold">Ansible Vault</strong>, ensuring that infrastructure code can be safely versioned and audited.
+              </p>
+              <div className="p-4 rounded-lg bg-muted/50 border border-border/60 font-mono text-xs text-foreground/80 space-y-1">
+                <span className="text-muted-foreground block">{"// Deployment Command:"}</span>
+                <p>$ ansible-playbook -i inventory.ini site.yml --vault-password-file=.vault_pass</p>
+                <p className="text-sky-600 dark:text-sky-400">Status: 42 roles executed &middot; 0 failed</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <Card className="bg-surface/60 border-border p-6 space-y-4">
-              <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-fit">
-                <ShieldCheck size={24} />
-              </div>
-              <CardTitle className="text-lg font-bold">Zero-Trust Network Mesh</CardTitle>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Zero public open router ports. Ingress is guarded by Tailscale mesh VPN, encrypted WireGuard tunnels, and Cloudflare Tunnels protected with Authelia multi-factor authentication.
-              </p>
-            </Card>
-
-            <Card className="bg-surface/60 border-border p-6 space-y-4">
-              <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 w-fit">
-                <HardDrives size={24} />
-              </div>
-              <CardTitle className="text-lg font-bold">ZFS Storage &amp; Snapshots</CardTitle>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                ZFS RAIDZ storage pools providing automated bitrot prevention, scheduled data scrub operations, and Kopia off-site deduplicated, encrypted snapshot backups.
-              </p>
-            </Card>
+        {/* Section 2: Zero-Trust & ZFS Storage */}
+        <section className="space-y-6 pb-12 border-b border-border/60">
+          <div className="space-y-1 max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
+              <ShieldCheck size={16} className="text-emerald-500" />
+              <span>Architectural Principle 02</span>
+            </div>
+            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Zero-Trust Network Mesh &amp; ZFS Data Integrity
+            </Typography.H2>
           </div>
 
-          {/* Ansible Roles Showcase */}
-          <div className="rounded-2xl border border-border bg-surface/50 p-6 sm:p-10 space-y-8">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <ArrowsClockwise size={18} className="text-foreground" />
-                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                  Codified Automation
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sm sm:text-base text-muted-foreground leading-relaxed font-sans">
+            <div className="lg:col-span-6 space-y-4">
+              <h3 className="text-base font-bold text-foreground">
+                Network Isolation Without Inbound Ports
+              </h3>
+              <p>
+                The server operates with zero public open router ports. All remote access is routed through an encrypted <strong className="text-foreground font-semibold">Tailscale WireGuard mesh network</strong>.
+              </p>
+              <p>
+                Exposed webhooks and web interfaces pass through Cloudflare Tunnels protected by <strong className="text-foreground font-semibold">Authelia MFA</strong> (multi-factor authentication) and Caddy TLS reverse proxying.
+              </p>
+            </div>
+            <div className="lg:col-span-6 space-y-4">
+              <h3 className="text-base font-bold text-foreground">
+                ZFS RAIDZ &amp; Content-Addressed Backups
+              </h3>
+              <p>
+                Storage pools utilize ZFS RAIDZ with automated copy-on-write integrity, periodic scrub operations, and automated snapshot policies to prevent silent data corruption (bitrot).
+              </p>
+              <p>
+                Disaster recovery is handled by <strong className="text-foreground font-semibold">Kopia</strong>: snapshots are encrypted client-side and deduplicated before transmission to off-site cloud storage.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Ansible Roles Registry */}
+        <section className="space-y-6">
+          <div className="space-y-1 max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
+              <HardDrives size={16} className="text-foreground" />
+              <span>Infrastructure Ledger</span>
+            </div>
+            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Codified Ansible Roles Registry
+            </Typography.H2>
+          </div>
+
+          <div className="divide-y divide-border/60">
+            {ANSIBLE_ROLES.map((role) => (
+              <div
+                key={role.name}
+                className="py-4 first:pt-2 last:pb-2 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline text-xs font-mono"
+              >
+                <span className="sm:col-span-4 font-bold text-foreground">
+                  {role.name}
+                </span>
+                <span className="sm:col-span-2 text-muted-foreground uppercase tracking-wider">
+                  {role.scope}
+                </span>
+                <span className="sm:col-span-6 text-muted-foreground font-sans text-xs">
+                  {role.desc}
                 </span>
               </div>
-              <Typography.H2 className="text-2xl sm:text-3xl font-bold">
-                Modular Ansible Roles (`nas-services`)
-              </Typography.H2>
-              <Typography.Body tone="muted">
-                Each subsystem is codified into an idempotent, testable Ansible role with encrypted secrets managed via Ansible Vault.
-              </Typography.Body>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {ANSIBLE_ROLES_HIGHLIGHT.map((role) => (
-                <div
-                  key={role.name}
-                  className="rounded-xl border border-border/80 bg-surface/60 p-4 space-y-1.5"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-foreground">
-                      roles/{role.name}
-                    </span>
-                    <span className="text-[10px] font-mono text-muted-foreground uppercase">
-                      Ansible Role
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {role.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
-
-          {/* AI & Observability Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="rounded-2xl border border-border bg-surface/50 p-6 sm:p-8 space-y-4">
-              <div className="flex items-center gap-2 text-foreground font-semibold text-base">
-                <Robot size={20} className="text-emerald-500" />
-                <span>Local AI Inference (Ollama)</span>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Integrated local LLMs running via Ollama paired with Open-WebUI. Allows private code refactoring, context processing, and experimentation without third-party data leakage.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-surface/50 p-6 sm:p-8 space-y-4">
-              <div className="flex items-center gap-2 text-foreground font-semibold text-base">
-                <ChartLineUp size={20} className="text-sky-500" />
-                <span>Real-Time Observability</span>
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Telemetry collected via Prometheus, Node Exporter, and cAdvisor. Visualized on Grafana dashboards monitoring CPU thermals, memory pressure, and ZFS pool health.
-              </p>
-            </div>
-          </div>
-        </div>
+        </section>
       </Container>
     </main>
   );

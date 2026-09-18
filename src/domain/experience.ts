@@ -12,7 +12,11 @@ export interface ExperienceItem {
   impacts: string[];
   skills: string[];
   featured?: boolean;
-  category: "Enterprise" | "Product & Growth" | "Aviation & Systems" | "Early Career";
+  category:
+    | "Enterprise"
+    | "Product & Growth"
+    | "Aviation & Systems"
+    | "Early Career";
 }
 
 export const EXPERIENCES: ExperienceItem[] = [
@@ -23,9 +27,9 @@ export const EXPERIENCES: ExperienceItem[] = [
     period: "May 2023 — Present",
     startYear: 2023,
     endYear: "Present",
-    location: "Spain (Remote)",
+    location: "Seville (Spain)",
     workMode: "Remote",
-    teamOrScope: "Fusion360, CI Team",
+    teamOrScope: "Fusion, CI Team",
     featured: true,
     category: "Enterprise",
     summary:
@@ -54,7 +58,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     period: "Feb 2022 — Feb 2023",
     startYear: 2022,
     endYear: 2023,
-    location: "Spain (Remote)",
+    location: "Seville (Spain)",
     workMode: "Remote",
     teamOrScope: "Growth Team",
     featured: true,
@@ -123,6 +127,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     endYear: 2017,
     location: "Amsterdam, Netherlands",
     workMode: "On-site",
+    teamOrScope: "Digital Campaigns",
     featured: false,
     category: "Early Career",
     summary:
@@ -182,6 +187,12 @@ export const EXPERIENCES: ExperienceItem[] = [
       "Programmed interactive map and client tracking modules integrating Google Maps API and early single-page application patterns.",
       "Established foundational mastery of the DOM, semantic HTML, CSS, and version control with Git.",
     ],
-    skills: ["JavaScript", "Google Maps API", "Git", "DOM Manipulation", "CSS3"],
+    skills: [
+      "JavaScript",
+      "Google Maps API",
+      "Git",
+      "DOM Manipulation",
+      "CSS3",
+    ],
   },
 ];

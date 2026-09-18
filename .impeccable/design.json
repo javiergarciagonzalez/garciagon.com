@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-18T14:40:00.000Z",
+  "title": "Design System: Javier García González Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Obsidian Dark",
+        "canonical": "#09090b",
+        "tonalRamp": ["#000000", "#09090b", "#121215", "#18181b", "#27272a", "#3f3f46", "#52525b", "#71717a"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Deep Surface Zinc",
+        "canonical": "#121215",
+        "tonalRamp": ["#050506", "#0c0c0e", "#121215", "#18181c", "#222226", "#2d2d33", "#393940", "#474750"]
+      },
+      "accent-emerald": {
+        "role": "accent",
+        "displayName": "Operational Emerald",
+        "canonical": "#10b981",
+        "tonalRamp": ["#022c22", "#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#34d399", "#6ee7b7"]
+      },
+      "accent-sky": {
+        "role": "accent",
+        "displayName": "Cloud Sky",
+        "canonical": "#0284c7",
+        "tonalRamp": ["#082f49", "#0c4a6e", "#075985", "#0369a1", "#0284c7", "#38bdf8", "#7dd3fc", "#bae6fd"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Primary Hero display and bold section introductions."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles and major system headers."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Company names, project titles, and card headers."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Narrative prose, architectural explanations, and impact points."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "Technology tags, status pills, and terminal commands."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glow-emerald",
+        "value": "0 0 16px rgba(16, 185, 129, 0.4)",
+        "purpose": "Luminous pulse for active operational indicators."
+      },
+      {
+        "name": "surface-elevation",
+        "value": "0 4px 20px -2px rgba(0, 0, 0, 0.5)",
+        "purpose": "Subtle hover lift for cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "spring-laser",
+        "value": "stiffness: 120, damping: 24",
+        "purpose": "Spring physics for the scroll-linked laser progress beam."
+      },
+      {
+        "name": "ease-hover",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1) 200ms",
+        "purpose": "Standard state transition for buttons, cards, and borders."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast action trigger with subtle hover opacity and active scale feedback.",
+      "html": "<button class=\"ds-btn-primary\"><span>Explore Experience</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-geist-sans, sans-serif); font-size: 14px; font-weight: 500; background: #f4f4f5; color: #09090b; padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; transition: opacity 0.2s, transform 0.1s; } .ds-btn-primary:hover { opacity: 0.9; } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Tactile surface button with fine hairline border for secondary actions.",
+      "html": "<button class=\"ds-btn-secondary\"><span>Get in touch</span></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-geist-sans, sans-serif); font-size: 14px; font-weight: 500; background: #121215; color: #f4f4f5; padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); cursor: pointer; transition: background 0.2s, border-color 0.2s; } .ds-btn-secondary:hover { background: #18181b; border-color: rgba(255, 255, 255, 0.16); }"
+    },
+    {
+      "name": "Status Pill Badge",
+      "kind": "chip",
+      "refersTo": "badge-default",
+      "description": "Monospace pill indicator with animated green pulse for active operational state.",
+      "html": "<span class=\"ds-badge-pulse\"><span class=\"ds-dot\"></span><span>Sr. Full Stack Engineer @ Autodesk</span></span>",
+      "css": ".ds-badge-pulse { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-geist-mono, monospace); font-size: 11px; font-weight: 500; background: #121215; color: #f4f4f5; padding: 3px 10px; border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.08); } .ds-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }"
+    },
+    {
+      "name": "Tactile Card",
+      "kind": "card",
+      "refersTo": "card-base",
+      "description": "Obsidian surface container with hairline border and hover lift.",
+      "html": "<div class=\"ds-card\"><h4 class=\"ds-card-title\">Autodesk</h4><p class=\"ds-card-desc\">Optimizing build systems and CI developer experience for C++ environments.</p></div>",
+      "css": ".ds-card { background: rgba(18, 18, 21, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; transition: border-color 0.2s, transform 0.2s; } .ds-card:hover { border-color: rgba(255, 255, 255, 0.16); transform: translateY(-2px); } .ds-card-title { font-family: var(--font-geist-sans, sans-serif); font-size: 18px; font-weight: 600; color: #f4f4f5; margin: 0 0 6px 0; } .ds-card-desc { font-family: var(--font-geist-sans, sans-serif); font-size: 13px; color: #a1a1aa; margin: 0; line-height: 1.5; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Architect's Ledger",
+    "overview": "\"The Architect's Ledger\" embodies understated editorial minimalism, spatial balance, and razor-sharp typographic discipline. Conceived for a Senior Full Stack & Distributed Systems Engineer with over 13 years of experience, this system intentionally rejects decorative noise, neon gradients, and superficial visual gimmicks. It treats the browser viewport as an authoritative ledger: clean obsidian and deep zinc planes, hairline borders, and calm, deliberate margins that let engineering accomplishments command focus.",
+    "keyCharacteristics": [
+      "Deep monochromatic contrast (obsidian #09090b and zinc #121215) with high legibility.",
+      "Typographic hierarchy powered by Geist Sans tracking tight and Geist Mono for code telemetry.",
+      "Razor-sharp 1px borders (rgba(255,255,255,0.08)) establishing depth without heavy drop shadows.",
+      "Deliberate emerald pulses (#10b981) reserved exclusively for live operational statuses and system telemetry."
+    ],
+    "rules": [
+      {
+        "name": "The Rarity of Green Rule",
+        "body": "Emerald (#10b981) is never used as a decorative brand wash. It is an operational status indicator meaning online, healthy, or current. Its rarity is what gives it authority.",
+        "section": "colors"
+      },
+      {
+        "name": "The Line Length Constraint Rule",
+        "body": "Body copy must never stretch across the full width of an ultra-wide container. Main prose blocks are strictly capped at max-w-3xl or max-w-2xl (~65-75 characters per line) to maintain comfortable scanning ergonomics.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces rest entirely flat. Shadows appear only as subtle state responses (hover lift, active scale, or focused modal drawers).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain strict separation between domain logic and presentation components (Hexagonal Architecture).",
+      "Do compute years of experience dynamically (new Date().getFullYear() - 2013) instead of hardcoding numbers.",
+      "Do keep copy direct, polite, precise, and humble; let the scale of past projects speak for itself.",
+      "Do test all screens in both Dark and Light modes to guarantee contrast ratios pass WCAG AA.",
+      "Do ensure all interactive components provide keyboard accessibility and visible focus rings."
+    ],
+    "donts": [
+      "Don't add generic stock photos or placeholder illustrations. Use real technical assets or structured code blocks.",
+      "Don't invent artificial executive roles ('Lead Architect', 'Systems Administrator') for solo side projects.",
+      "Don't use neon gradients, floating blobs, or gratuitous parallax that distracts from reading.",
+      "Don't violate the single-responsibility principle by coupling external libraries into domain models.",
+      "Don't use arbitrary Tailwind utility values when standard design tokens exist."
+    ]
+  }
+}
