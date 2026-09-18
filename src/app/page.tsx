@@ -7,9 +7,9 @@ import { Button } from "@/shared/components/Button";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/shared/components/Card";
 import { Hero } from "@/shared/components/Hero";
 import { ExperienceTimeline } from "@/shared/components/ExperienceTimeline";
+import { SkillsAndEducation } from "@/shared/components/SkillsAndEducation";
 import { PROFILE } from "@/domain/profile";
 import {
-  Wrench,
   FolderSimple,
   EnvelopeSimple,
   ArrowSquareOut,
@@ -25,30 +25,8 @@ export default function Home() {
       {/* 2. Interactive Work Experience Timeline ("Wow" Effect) */}
       <ExperienceTimeline />
 
-      {/* 3. Skills & Competencies Section Placeholder */}
-      <section id="skills" className="scroll-mt-24 border-t border-border/60 pt-16">
-        <Container size="xl" className="space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Wrench size={18} className="text-muted-foreground" />
-                <Typography.Subtle className="font-mono uppercase tracking-widest">Technical Arsenal</Typography.Subtle>
-              </div>
-              <Typography.H2>Skills &amp; Architecture</Typography.H2>
-            </div>
-            <Typography.Subtle className="font-mono">Task 6 Target</Typography.Subtle>
-          </div>
-
-          <Card className="border-dashed border-border/80 bg-surface/40">
-            <CardHeader>
-              <CardTitle className="text-lg">Core Competencies &amp; Education</CardTitle>
-              <CardDescription>
-                Distributed Systems, TypeScript &amp; Node.js, Cloud Architecture (MSc Cloud Apps), CI/CD Ergonomics, and Frontend Performance.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </Container>
-      </section>
+      {/* 3. Skills, Architecture & Education Section */}
+      <SkillsAndEducation />
 
       {/* 4. Projects Section Placeholder */}
       <section id="projects" className="scroll-mt-24 border-t border-border/60 pt-16">
