@@ -4,13 +4,12 @@ import * as React from "react";
 import { Container } from "@/shared/components/Container";
 import { Typography } from "@/shared/components/Typography";
 import { Button } from "@/shared/components/Button";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/shared/components/Card";
 import { Hero } from "@/shared/components/Hero";
 import { ExperienceTimeline } from "@/shared/components/ExperienceTimeline";
 import { SkillsAndEducation } from "@/shared/components/SkillsAndEducation";
+import { ProjectsSection } from "@/shared/components/ProjectsSection";
 import { PROFILE } from "@/domain/profile";
 import {
-  FolderSimple,
   EnvelopeSimple,
   ArrowSquareOut,
   MapPin,
@@ -28,30 +27,8 @@ export default function Home() {
       {/* 3. Skills, Architecture & Education Section */}
       <SkillsAndEducation />
 
-      {/* 4. Projects Section Placeholder */}
-      <section id="projects" className="scroll-mt-24 border-t border-border/60 pt-16">
-        <Container size="xl" className="space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <FolderSimple size={18} className="text-muted-foreground" />
-                <Typography.Subtle className="font-mono uppercase tracking-widest">Engineering Work</Typography.Subtle>
-              </div>
-              <Typography.H2>Side Projects &amp; Highlights</Typography.H2>
-            </div>
-            <Typography.Subtle className="font-mono">Task 7 Target</Typography.Subtle>
-          </div>
-
-          <Card className="border-dashed border-border/80 bg-surface/40">
-            <CardHeader>
-              <CardTitle className="text-lg">Featured Projects Grid</CardTitle>
-              <CardDescription>
-                Detailed showcase space including RamenTask, open source work, and system architecture artifacts.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </Container>
-      </section>
+      {/* 4. Side Projects, RamenTask & Engineering Lab */}
+      <ProjectsSection />
 
       {/* 5. Contact Section */}
       <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16 pb-12">
@@ -59,11 +36,15 @@ export default function Home() {
           <div className="max-w-2xl space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <EnvelopeSimple size={18} className="text-muted-foreground" />
-              <Typography.Subtle className="font-mono uppercase tracking-widest">Direct Communication</Typography.Subtle>
+              <Typography.Subtle className="font-mono uppercase tracking-widest text-[11px] text-muted-foreground">
+                Direct Communication
+              </Typography.Subtle>
             </div>
-            <Typography.H2>Let&rsquo;s Connect</Typography.H2>
-            <Typography.Body tone="muted">
-              Whether you want to discuss distributed backend architecture, CI/CD optimization, technical leadership, or high-scale engineering challenges, my inbox is always open.
+            <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              Let&rsquo;s Connect
+            </Typography.H2>
+            <Typography.Body tone="muted" className="text-base sm:text-lg">
+              Whether you want to discuss distributed backend architecture, CI/CD build optimization, technical leadership, or high-scale engineering challenges, my inbox is always open.
             </Typography.Body>
           </div>
 
@@ -91,8 +72,8 @@ export default function Home() {
             >
               GitHub Profile
             </Button>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground font-mono ml-auto">
-              <MapPin size={14} />
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono ml-auto">
+              <MapPin size={14} className="text-foreground" />
               <span>{PROFILE.location} &middot; {PROFILE.workMode}</span>
             </div>
           </div>
