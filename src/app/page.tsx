@@ -4,12 +4,11 @@ import * as React from "react";
 import { Container } from "@/shared/components/Container";
 import { Typography } from "@/shared/components/Typography";
 import { Button } from "@/shared/components/Button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/Card";
-import { Badge } from "@/shared/components/Badge";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/shared/components/Card";
 import { Hero } from "@/shared/components/Hero";
+import { ExperienceTimeline } from "@/shared/components/ExperienceTimeline";
 import { PROFILE } from "@/domain/profile";
 import {
-  Briefcase,
   Wrench,
   FolderSimple,
   EnvelopeSimple,
@@ -23,49 +22,8 @@ export default function Home() {
       {/* 1. Hero & Professional Intro Section */}
       <Hero />
 
-      {/* 2. Work Experience Section Placeholder */}
-      <section id="experience" className="scroll-mt-24 border-t border-border/60 pt-16">
-        <Container size="xl" className="space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Briefcase size={18} className="text-muted-foreground" />
-                <Typography.Subtle className="font-mono uppercase tracking-widest">Career History</Typography.Subtle>
-              </div>
-              <Typography.H2>Work Experience</Typography.H2>
-            </div>
-            <Typography.Subtle className="font-mono">Task 5 Target</Typography.Subtle>
-          </div>
-
-          <Card interactive glow className="border-dashed border-border/80 bg-surface/40">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-lg">Interactive Experience Timeline</CardTitle>
-                <Badge variant="outline">Coming in Task 5</Badge>
-              </div>
-              <CardDescription>
-                A visually striking, navigable timeline highlighting Autodesk, Typeform, Schiphol Airport, and earlier career milestones with a &ldquo;wow effect&rdquo;.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                <div className="p-4 rounded-lg bg-surface border border-border">
-                  <span className="font-semibold text-foreground text-sm block">Autodesk</span>
-                  <span className="text-xs text-muted-foreground font-mono">2023 &ndash; Present</span>
-                </div>
-                <div className="p-4 rounded-lg bg-surface border border-border">
-                  <span className="font-semibold text-foreground text-sm block">Typeform</span>
-                  <span className="text-xs text-muted-foreground font-mono">2022 &ndash; 2023</span>
-                </div>
-                <div className="p-4 rounded-lg bg-surface border border-border">
-                  <span className="font-semibold text-foreground text-sm block">Schiphol Airport</span>
-                  <span className="text-xs text-muted-foreground font-mono">2017 &ndash; 2021</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </Container>
-      </section>
+      {/* 2. Interactive Work Experience Timeline ("Wow" Effect) */}
+      <ExperienceTimeline />
 
       {/* 3. Skills & Competencies Section Placeholder */}
       <section id="skills" className="scroll-mt-24 border-t border-border/60 pt-16">
