@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
 import { EXPERIENCES } from "@/domain/experience";
@@ -93,22 +94,36 @@ export function ExperienceTimeline() {
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                     {/* Left Column: Metadata & Tenure (4 cols) */}
-                    <div className="lg:col-span-4 space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-                          {exp.company}
-                        </span>
-                        {isCurrent && (
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            Current
-                          </span>
+                    <div className="lg:col-span-4 space-y-3">
+                      <div className="flex items-start gap-3.5">
+                        {exp.logo && (
+                          <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/80 bg-white p-1.5 shadow-2xs overflow-hidden mt-0.5">
+                            <Image
+                              src={exp.logo}
+                              alt={`${exp.company} logo`}
+                              width={40}
+                              height={40}
+                              className="h-full w-full object-contain rounded-sm"
+                            />
+                          </div>
                         )}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+                              {exp.company}
+                            </span>
+                            {isCurrent && (
+                              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0">
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                Current
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm font-medium text-foreground/90 pt-0.5">
+                            {exp.role}
+                          </p>
+                        </div>
                       </div>
-
-                      <p className="text-sm font-medium text-foreground/90">
-                        {exp.role}
-                      </p>
 
                       {exp.teamOrScope && (
                         <p className="text-xs font-mono text-muted-foreground">

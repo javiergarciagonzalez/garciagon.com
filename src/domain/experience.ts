@@ -2,6 +2,7 @@ export interface ExperienceItem {
   id: string;
   role: string;
   company: string;
+  logo?: string;
   period: string;
   startYear: number;
   endYear: number | "Present";
@@ -24,6 +25,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: "autodesk",
     role: "Sr. Full Stack Engineer",
     company: "Autodesk",
+    logo: "/images/companies/autodesk.svg",
     period: "May 2023 — Present",
     startYear: 2023,
     endYear: "Present",
@@ -55,6 +57,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: "typeform",
     role: "Frontend Engineer",
     company: "Typeform",
+    logo: "/images/companies/typeform.png",
     period: "Feb 2022 — Feb 2023",
     startYear: 2022,
     endYear: 2023,
@@ -88,6 +91,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: "schiphol",
     role: "Frontend Engineer",
     company: "Schiphol Airport",
+    logo: "/images/companies/schiphol.svg",
     period: "Jun 2017 — Oct 2021",
     startYear: 2017,
     endYear: 2021,
@@ -122,6 +126,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: "thispage",
     role: "Frontend Developer",
     company: "This Page Amsterdam",
+    logo: "/images/companies/thispage.jpg",
     period: "Oct 2016 — Jun 2017",
     startYear: 2016,
     endYear: 2017,
@@ -148,6 +153,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: "bq",
     role: "Frontend Developer",
     company: "BQ",
+    logo: "/images/companies/bq.png",
     period: "Apr 2015 — Sep 2016",
     startYear: 2015,
     endYear: 2016,
@@ -174,6 +180,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: "welvi",
     role: "Web Developer Intern",
     company: "Welvi & Creania",
+    logo: "/images/companies/welvi.jpg",
     period: "Jul 2013 — Jan 2014",
     startYear: 2013,
     endYear: 2014,
