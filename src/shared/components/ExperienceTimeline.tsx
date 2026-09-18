@@ -4,6 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
+import { TechBadge } from "./TechBadge";
 import { EXPERIENCES } from "@/domain/experience";
 import {
   Briefcase,
@@ -170,12 +171,11 @@ export function ExperienceTimeline() {
                           Stack:
                         </span>
                         {exp.skills.map((skill) => (
-                          <span
+                          <TechBadge
                             key={skill}
-                            className="inline-flex items-center px-2.5 py-0.5 rounded bg-muted/60 text-xs font-mono text-muted-foreground border border-border/60"
-                          >
-                            {skill}
-                          </span>
+                            name={skill}
+                            size="sm"
+                          />
                         ))}
                       </div>
                     </div>

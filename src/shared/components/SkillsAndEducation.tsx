@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
+import { TechBadge } from "./TechBadge";
 import {
   SKILL_CATEGORIES,
   EDUCATION_HISTORY,
@@ -56,15 +57,11 @@ export function SkillsAndEducation() {
 
                 <div className="flex flex-wrap gap-2 pt-1">
                   {cat.skills.map((skill) => (
-                    <span
+                    <TechBadge
                       key={skill.name}
-                      className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-muted/60 text-foreground/85 border border-border/60"
-                    >
-                      {skill.highlight && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-foreground/60 mr-1.5" />
-                      )}
-                      <span>{skill.name}</span>
-                    </span>
+                      name={skill.name}
+                      highlight={skill.highlight}
+                    />
                   ))}
                 </div>
               </div>
