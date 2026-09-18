@@ -4,210 +4,205 @@ import * as React from "react";
 import { Container } from "@/shared/components/Container";
 import { Typography } from "@/shared/components/Typography";
 import { Button } from "@/shared/components/Button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/shared/components/Card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/Card";
 import { Badge } from "@/shared/components/Badge";
-import { ThemeToggle } from "@/shared/components/ThemeToggle";
 import { getExperienceTag } from "@/domain/profile";
+import { PROFILE } from "@/domain/profile";
 import {
-  Terminal,
   ArrowRight,
-  GitBranch,
-  Cpu,
-  Cloud,
-  CheckCircle,
-  Code,
+  Briefcase,
+  Wrench,
+  FolderSimple,
+  EnvelopeSimple,
+  ArrowSquareOut,
+  MapPin,
 } from "@phosphor-icons/react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen py-12 sm:py-20 bg-background text-foreground transition-colors duration-200">
-      <Container size="lg" className="space-y-16">
-        {/* Top bar with Theme Toggle */}
-        <header className="flex items-center justify-between border-b border-border pb-6">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm tracking-widest uppercase font-semibold text-muted-foreground">
-              Design System Showcase
-            </span>
-            <Badge variant="dot" dotColor="green">
-              Task 2 Active
-            </Badge>
-          </div>
-          <ThemeToggle />
-        </header>
+    <main className="py-12 sm:py-20 space-y-24">
+      {/* 1. About / Hero Section */}
+      <section id="about" className="scroll-mt-24">
+        <Container size="xl">
+          <div className="max-w-3xl space-y-6">
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="dot" dotColor="green">Available for high-impact engineering</Badge>
+              <Badge variant="default">{getExperienceTag()}</Badge>
+              <Badge variant="outline">{PROFILE.location}</Badge>
+            </div>
 
-        {/* Hero Preview Section */}
-        <section className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="default">Senior Full Stack Engineer</Badge>
-            <Badge variant="outline">{getExperienceTag()}</Badge>
-            <Badge variant="accent">TS & Node.js Specialist</Badge>
-          </div>
-          <Typography.H1>
-            Javier García González
-          </Typography.H1>
-          <Typography.Lead>
-            Architecting scalable web services, optimizing high-performance CI/CD pipelines, and crafting clean full-stack architectures.
-          </Typography.Lead>
-        </section>
+            <Typography.H1 className="text-4xl sm:text-6xl font-bold tracking-tight">
+              {PROFILE.name}
+            </Typography.H1>
 
-        {/* Typography System Section */}
-        <section className="space-y-6">
-          <div className="border-b border-border pb-2">
-            <Typography.H2>Typography Hierarchy</Typography.H2>
-            <Typography.Subtle>Display, section headers, card titles, and body prose</Typography.Subtle>
-          </div>
-          <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
-            <div>
-              <Typography.Subtle className="block mb-1 font-mono uppercase">Typography.H1</Typography.Subtle>
-              <Typography.H1 className="text-3xl sm:text-4xl">
-                Engineering at Scale
-              </Typography.H1>
-            </div>
-            <div>
-              <Typography.Subtle className="block mb-1 font-mono uppercase">Typography.H2</Typography.Subtle>
-              <Typography.H2>
-                Work Experience & Technical Leadership
-              </Typography.H2>
-            </div>
-            <div>
-              <Typography.Subtle className="block mb-1 font-mono uppercase">Typography.H3</Typography.Subtle>
-              <Typography.H3>
-                Autodesk — Sr. Full Stack Engineer (Fusion360 CI Team)
-              </Typography.H3>
-            </div>
-            <div>
-              <Typography.Subtle className="block mb-1 font-mono uppercase">Typography.Body (Default)</Typography.Subtle>
-              <Typography.Body>
-                Driving technical decision-making within distributed teams, focusing on build system optimization, clean architecture, and developer ergonomics for complex C++ and cloud environments.
-              </Typography.Body>
-            </div>
-            <div>
-              <Typography.Subtle className="block mb-1 font-mono uppercase">Typography.Body (Muted)</Typography.Subtle>
-              <Typography.Body tone="muted">
-                Prioritizing reliability, type safety, and verifiable system architecture over transient tech trends.
-              </Typography.Body>
-            </div>
-            <div className="flex items-center gap-2 pt-2">
-              <Typography.Code>TypeScript</Typography.Code>
-              <Typography.Code>Node.js</Typography.Code>
-              <Typography.Code>Docker</Typography.Code>
-              <Typography.Code>Kubernetes</Typography.Code>
-            </div>
-          </div>
-        </section>
+            <Typography.Lead>
+              Senior Full Stack Engineer specializing in TypeScript, Node.js, distributed backend systems, and high-performance CI/CD architectures.
+            </Typography.Lead>
 
-        {/* Buttons Section */}
-        <section className="space-y-6">
-          <div className="border-b border-border pb-2">
-            <Typography.H2>Buttons & Micro-interactions</Typography.H2>
-            <Typography.Subtle>Standardized interactive elements with tactile feedback</Typography.Subtle>
-          </div>
-          <div className="flex flex-wrap items-center gap-4 rounded-xl border border-border bg-surface p-6">
-            <Button variant="primary" rightIcon={<ArrowRight size={16} />}>
-              Primary Action
-            </Button>
-            <Button variant="secondary" leftIcon={<GitBranch size={16} />}>
-              Secondary Button
-            </Button>
-            <Button variant="outline" leftIcon={<Terminal size={16} />}>
-              Outline Variant
-            </Button>
-            <Button variant="ghost">
-              Ghost Button
-            </Button>
-            <Button variant="link" rightIcon={<ArrowRight size={14} />}>
-              Text Link
-            </Button>
-            <Button variant="secondary" size="icon" aria-label="Icon only">
-              <Code size={18} />
-            </Button>
-            <Button variant="primary" disabled>
-              Disabled State
-            </Button>
-          </div>
-        </section>
+            <Typography.Body tone="muted" className="text-base sm:text-lg">
+              Currently driving technical decisions within the Fusion360 CI team at <strong>Autodesk</strong>. 
+              Over a decade of experience turning complex distributed systems and frontend workflows into reliable, type-safe, and scalable software.
+            </Typography.Body>
 
-        {/* Cards Section */}
-        <section className="space-y-6">
-          <div className="border-b border-border pb-2">
-            <Typography.H2>Cards & Surfaces</Typography.H2>
-            <Typography.Subtle>Tactile container cards inspired by uiverse.io and mensch.club</Typography.Subtle>
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Button
+                variant="primary"
+                href="#experience"
+                rightIcon={<ArrowRight size={16} />}
+              >
+                Explore Experience
+              </Button>
+              <Button
+                variant="secondary"
+                href="#contact"
+                leftIcon={<EnvelopeSimple size={16} />}
+              >
+                Get in touch
+              </Button>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card interactive glow>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="p-2 rounded-lg bg-muted text-foreground">
-                    <Cpu size={20} />
-                  </div>
-                  <Badge variant="dot" dotColor="green">Active</Badge>
+        </Container>
+      </section>
+
+      {/* 2. Work Experience Section Placeholder */}
+      <section id="experience" className="scroll-mt-24 border-t border-border/60 pt-16">
+        <Container size="xl" className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Briefcase size={18} className="text-muted-foreground" />
+                <Typography.Subtle className="font-mono uppercase tracking-widest">Career History</Typography.Subtle>
+              </div>
+              <Typography.H2>Work Experience</Typography.H2>
+            </div>
+            <Typography.Subtle className="font-mono">Task 5 Target</Typography.Subtle>
+          </div>
+
+          <Card interactive glow className="border-dashed border-border/80 bg-surface/40">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg">Interactive Experience Timeline</CardTitle>
+                <Badge variant="outline">Coming in Task 5</Badge>
+              </div>
+              <CardDescription>
+                A visually striking, navigable timeline highlighting Autodesk, Typeform, Schiphol Airport, and earlier career milestones with a &ldquo;wow effect&rdquo;.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div className="p-4 rounded-lg bg-surface border border-border">
+                  <span className="font-semibold text-foreground text-sm block">Autodesk</span>
+                  <span className="text-xs text-muted-foreground font-mono">2023 &ndash; Present</span>
                 </div>
-                <CardTitle>Autodesk</CardTitle>
-                <CardDescription>Sr. Full Stack Engineer (2023 - Present)</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Typography.Body tone="muted" className="text-sm">
-                  Optimizing build systems and developer experience for C++ & CI environments in Fusion360.
-                </Typography.Body>
-              </CardContent>
-              <CardFooter className="justify-between">
-                <span className="font-mono text-xs text-muted-foreground">Remote (Spain)</span>
-                <span className="text-xs font-medium text-foreground">Fusion CI &rarr;</span>
-              </CardFooter>
-            </Card>
-
-            <Card interactive>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="p-2 rounded-lg bg-muted text-foreground">
-                    <Cloud size={20} />
-                  </div>
-                  <Badge variant="outline">2022 - 2023</Badge>
+                <div className="p-4 rounded-lg bg-surface border border-border">
+                  <span className="font-semibold text-foreground text-sm block">Typeform</span>
+                  <span className="text-xs text-muted-foreground font-mono">2022 &ndash; 2023</span>
                 </div>
-                <CardTitle>Typeform</CardTitle>
-                <CardDescription>Frontend Engineer (Growth Team)</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Typography.Body tone="muted" className="text-sm">
-                  Led A/B experimentation, micro-services simplification, and frontend performance at scale.
-                </Typography.Body>
-              </CardContent>
-              <CardFooter className="justify-between">
-                <span className="font-mono text-xs text-muted-foreground">Remote</span>
-                <span className="text-xs font-medium text-foreground">Growth &rarr;</span>
-              </CardFooter>
-            </Card>
-
-            <Card interactive>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="p-2 rounded-lg bg-muted text-foreground">
-                    <CheckCircle size={20} />
-                  </div>
-                  <Badge variant="outline">2017 - 2021</Badge>
+                <div className="p-4 rounded-lg bg-surface border border-border">
+                  <span className="font-semibold text-foreground text-sm block">Schiphol Airport</span>
+                  <span className="text-xs text-muted-foreground font-mono">2017 &ndash; 2021</span>
                 </div>
-                <CardTitle>Schiphol Airport</CardTitle>
-                <CardDescription>Frontend Engineer (4+ years)</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Typography.Body tone="muted" className="text-sm">
-                  Monolith to micro-services migration, self-service kiosk apps, and passenger flight systems.
-                </Typography.Body>
-              </CardContent>
-              <CardFooter className="justify-between">
-                <span className="font-mono text-xs text-muted-foreground">Amsterdam</span>
-                <span className="text-xs font-medium text-foreground">Aviation &rarr;</span>
-              </CardFooter>
-            </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </Container>
+      </section>
+
+      {/* 3. Skills & Competencies Section Placeholder */}
+      <section id="skills" className="scroll-mt-24 border-t border-border/60 pt-16">
+        <Container size="xl" className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Wrench size={18} className="text-muted-foreground" />
+                <Typography.Subtle className="font-mono uppercase tracking-widest">Technical Arsenal</Typography.Subtle>
+              </div>
+              <Typography.H2>Skills &amp; Architecture</Typography.H2>
+            </div>
+            <Typography.Subtle className="font-mono">Task 6 Target</Typography.Subtle>
           </div>
-        </section>
 
-        {/* Footer info */}
-        <footer className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-mono">
-          <div>Task 2 Design System Preview Complete</div>
-          <div>Next Step: Task 3 (Layout, Navigation & Footer)</div>
-        </footer>
-      </Container>
+          <Card className="border-dashed border-border/80 bg-surface/40">
+            <CardHeader>
+              <CardTitle className="text-lg">Core Competencies &amp; Education</CardTitle>
+              <CardDescription>
+                Distributed Systems, TypeScript &amp; Node.js, Cloud Architecture (MSc Cloud Apps), CI/CD Ergonomics, and Frontend Performance.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </Container>
+      </section>
+
+      {/* 4. Projects Section Placeholder */}
+      <section id="projects" className="scroll-mt-24 border-t border-border/60 pt-16">
+        <Container size="xl" className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <FolderSimple size={18} className="text-muted-foreground" />
+                <Typography.Subtle className="font-mono uppercase tracking-widest">Engineering Work</Typography.Subtle>
+              </div>
+              <Typography.H2>Side Projects &amp; Highlights</Typography.H2>
+            </div>
+            <Typography.Subtle className="font-mono">Task 7 Target</Typography.Subtle>
+          </div>
+
+          <Card className="border-dashed border-border/80 bg-surface/40">
+            <CardHeader>
+              <CardTitle className="text-lg">Featured Projects Grid</CardTitle>
+              <CardDescription>
+                Detailed showcase space including RamenTask, open source work, and system architecture artifacts.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </Container>
+      </section>
+
+      {/* 5. Contact Section */}
+      <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16">
+        <Container size="xl" className="space-y-8">
+          <div className="max-w-2xl space-y-4">
+            <div className="flex items-center gap-2 mb-2">
+              <EnvelopeSimple size={18} className="text-muted-foreground" />
+              <Typography.Subtle className="font-mono uppercase tracking-widest">Direct Communication</Typography.Subtle>
+            </div>
+            <Typography.H2>Let&rsquo;s Connect</Typography.H2>
+            <Typography.Body tone="muted">
+              Whether you want to discuss distributed backend architecture, CI/CD optimization, technical leadership, or high-scale engineering challenges, my inbox is always open.
+            </Typography.Body>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <Button
+              variant="primary"
+              href={`mailto:${PROFILE.email}`}
+              leftIcon={<EnvelopeSimple size={18} />}
+            >
+              {PROFILE.email}
+            </Button>
+            <Button
+              variant="secondary"
+              href={PROFILE.socials.linkedin}
+              external
+              rightIcon={<ArrowSquareOut size={16} />}
+            >
+              LinkedIn Profile
+            </Button>
+            <Button
+              variant="secondary"
+              href={PROFILE.socials.github}
+              external
+              rightIcon={<ArrowSquareOut size={16} />}
+            >
+              GitHub Profile
+            </Button>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground font-mono ml-auto">
+              <MapPin size={14} />
+              <span>{PROFILE.location} &middot; {PROFILE.workMode}</span>
+            </div>
+          </div>
+        </Container>
+      </section>
     </main>
   );
 }
