@@ -6,10 +6,9 @@ import { Typography } from "@/shared/components/Typography";
 import { Button } from "@/shared/components/Button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/shared/components/Card";
 import { Badge } from "@/shared/components/Badge";
-import { getExperienceTag } from "@/domain/profile";
+import { Hero } from "@/shared/components/Hero";
 import { PROFILE } from "@/domain/profile";
 import {
-  ArrowRight,
   Briefcase,
   Wrench,
   FolderSimple,
@@ -20,49 +19,9 @@ import {
 
 export default function Home() {
   return (
-    <main className="py-12 sm:py-20 space-y-24">
-      {/* 1. About / Hero Section */}
-      <section id="about" className="scroll-mt-24">
-        <Container size="xl">
-          <div className="max-w-3xl space-y-6">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="dot" dotColor="green">Available for high-impact engineering</Badge>
-              <Badge variant="default">{getExperienceTag()}</Badge>
-              <Badge variant="outline">{PROFILE.location}</Badge>
-            </div>
-
-            <Typography.H1 className="text-4xl sm:text-6xl font-bold tracking-tight">
-              {PROFILE.name}
-            </Typography.H1>
-
-            <Typography.Lead>
-              Senior Full Stack Engineer specializing in TypeScript, Node.js, distributed backend systems, and high-performance CI/CD architectures.
-            </Typography.Lead>
-
-            <Typography.Body tone="muted" className="text-base sm:text-lg">
-              Currently driving technical decisions within the Fusion360 CI team at <strong>Autodesk</strong>. 
-              Over a decade of experience turning complex distributed systems and frontend workflows into reliable, type-safe, and scalable software.
-            </Typography.Body>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Button
-                variant="primary"
-                href="#experience"
-                rightIcon={<ArrowRight size={16} />}
-              >
-                Explore Experience
-              </Button>
-              <Button
-                variant="secondary"
-                href="#contact"
-                leftIcon={<EnvelopeSimple size={16} />}
-              >
-                Get in touch
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </section>
+    <main className="space-y-16 sm:space-y-24">
+      {/* 1. Hero & Professional Intro Section */}
+      <Hero />
 
       {/* 2. Work Experience Section Placeholder */}
       <section id="experience" className="scroll-mt-24 border-t border-border/60 pt-16">
@@ -159,7 +118,7 @@ export default function Home() {
       </section>
 
       {/* 5. Contact Section */}
-      <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16">
+      <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16 pb-12">
         <Container size="xl" className="space-y-8">
           <div className="max-w-2xl space-y-4">
             <div className="flex items-center gap-2 mb-2">
