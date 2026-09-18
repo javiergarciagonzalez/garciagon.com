@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./Container";
 import { ThemeToggle } from "./ThemeToggle";
 import { NAV_ITEMS } from "@/domain/navigation";
@@ -21,8 +22,15 @@ export function Header() {
             className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground rounded-md py-1"
           >
             {/* Personal Brand Mark */}
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-surface text-foreground font-mono font-bold text-xs tracking-tighter shadow-2xs group-hover:border-foreground/40 group-hover:bg-surface-hover transition-all">
-              <span>JG</span>
+            <div className="relative flex h-8 w-8 items-center justify-center shrink-0">
+              <Image
+                src="/logo.webp"
+                alt={`${PROFILE.name} logo`}
+                width={32}
+                height={35}
+                className="h-8 w-auto object-contain dark:brightness-0 dark:invert transition-transform group-hover:scale-105"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-semibold tracking-tight text-foreground transition-colors group-hover:text-muted-foreground">
