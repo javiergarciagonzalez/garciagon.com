@@ -38,8 +38,8 @@ export function Hero() {
             {/* Core Narrative */}
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-sans">
               <p>
-                I build high-throughput backend services, CI/CD build infrastructure,
-                and reliable web applications with{" "}
+                I build high-throughput backend services, CI/CD build
+                infrastructure, and reliable web applications with{" "}
                 <strong className="text-foreground font-semibold">
                   TypeScript &amp; Node.js
                 </strong>
@@ -51,8 +51,9 @@ export function Hero() {
                   Autodesk
                 </strong>
                 , optimizing large-scale C++ build systems and CI pipelines for
-                Fusion. Over the past 13 years, I&rsquo;ve engineered systems for
-                enterprise platforms, airport kiosks, and high-growth SaaS.
+                Fusion. Over the past 13 years, I&rsquo;ve engineered systems
+                for enterprise platforms, airport digital solutions, and
+                high-growth SaaS.
               </p>
             </div>
 
@@ -91,26 +92,32 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Clean Framed Portrait (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="w-full max-w-sm">
-              <div className="relative rounded-2xl border border-border bg-surface p-3 shadow-lg transition-all duration-300 hover:border-border-highlight">
-                {/* Image Frame */}
-                <div className="relative aspect-4/5 w-full overflow-hidden rounded-xl bg-muted">
-                  <Image
-                    src="/images/profile.webp"
-                    alt={PROFILE.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 384px"
-                    className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500 scale-100 hover:scale-102"
-                    priority
-                  />
-                </div>
+          {/* Right Column: Warm Circular Avatar with Ambient Halo & Live Status (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center">
+            <div className="relative group">
+              {/* Soft Ambient Halo */}
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-foreground/10 via-foreground/5 to-transparent blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
 
-                {/* Clean Subtitle Caption */}
-                <div className="mt-3 px-1.5 flex items-center justify-between text-xs font-mono text-muted-foreground">
-                  <span>Autodesk</span>
-                  <span>Seville, Spain (Remote)</span>
+              {/* Circular Avatar Container */}
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden ring-2 ring-border/80 shadow-xl bg-muted">
+                <Image
+                  src="/images/profile.webp"
+                  alt={PROFILE.name}
+                  fill
+                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                  priority
+                />
+              </div>
+
+              {/* Live Status Pill */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/95 px-3.5 py-1.5 shadow-md backdrop-blur-sm text-xs font-mono text-foreground">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <span>Autodesk &middot; Fusion CI team</span>
                 </div>
               </div>
             </div>
