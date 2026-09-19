@@ -30,7 +30,7 @@ export function Hero() {
               <p className="text-xl sm:text-2xl font-semibold text-foreground/90 tracking-tight">
                 Senior Full Stack Engineer &middot;{" "}
                 <span className="text-muted-foreground font-normal">
-                  TypeScript &amp; Node.js Specialist
+                  TypeScript, React &amp; Node.js
                 </span>
               </p>
             </div>
@@ -38,22 +38,24 @@ export function Hero() {
             {/* Core Narrative */}
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-sans">
               <p>
-                I build high-throughput backend services, CI/CD build
-                infrastructure, and reliable web applications with{" "}
+                Rooted in frontend engineering and UI craftsmanship, I evolved into a
+                full stack engineer building end-to-end web applications with{" "}
                 <strong className="text-foreground font-semibold">
-                  TypeScript &amp; Node.js
+                  TypeScript, React, and Node.js
                 </strong>
-                .
+                . I bridge polished, accessible interfaces with resilient backend
+                services and automated developer tooling.
               </p>
               <p>
                 Currently at{" "}
                 <strong className="text-foreground font-semibold">
                   Autodesk
                 </strong>
-                , optimizing large-scale C++ build systems and CI pipelines for
-                Fusion. Over the past 13 years, I&rsquo;ve engineered systems
-                for enterprise platforms, airport digital solutions, and
-                high-growth SaaS.
+                , I build full-stack internal platforms and developer tools that
+                empower the Fusion CI team to manage and scale large-scale,
+                multi-platform build infrastructure. Over the past 13 years,
+                I&rsquo;ve delivered production systems for high-growth SaaS,
+                airport digital kiosks, and client-side utilities.
               </p>
             </div>
 

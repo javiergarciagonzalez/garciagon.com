@@ -10,14 +10,14 @@ export function getExperienceTag(): string {
 
 export function getBioSummary(): string {
   const years = getYearsOfExperience();
-  return `Senior Full Stack Engineer with ${years}+ years of experience building reliable backend services, CI/CD build infrastructure, and modern web platforms.`;
+  return `Senior Full Stack Engineer with ${years}+ years of experience. Rooted in frontend engineering and evolved across modern React, distributed Node.js services, and CI/CD build infrastructure.`;
 }
 
 export const PROFILE = {
   name: "Javier García González",
   shortName: "Javier García",
   title: "Senior Full Stack Engineer",
-  roleHeadline: "TypeScript & Node.js Specialist",
+  roleHeadline: "TypeScript, React & Node.js",
   location: "Seville, Spain",
   workMode: "Remote (Spain)",
   email: "javier@garciagon.com",
