@@ -38,28 +38,21 @@ export function Hero() {
             {/* Core Narrative */}
             <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl font-sans">
               <p>
-                Specialized in{" "}
+                I build high-throughput backend services, CI/CD build infrastructure,
+                and reliable web applications with{" "}
                 <strong className="text-foreground font-semibold">
                   TypeScript &amp; Node.js
                 </strong>
-                , distributed backend architecture, and developer-first build
-                infrastructure.
+                .
               </p>
               <p>
                 Currently at{" "}
                 <strong className="text-foreground font-semibold">
                   Autodesk
                 </strong>
-                , driving technical build systems within the Fusion CI
-                team—optimizing developer feedback loops, automated CI/CD
-                pipelines, and multi-platform compilation environments for
-                large-scale C++ and cloud codebases.
-              </p>
-              <p className="text-sm sm:text-base text-muted-foreground/85">
-                With 13 years of engineering experience across enterprise
-                software, high-scale growth products, and self-hosted
-                infrastructure, I focus on systems that are verifiable,
-                decoupled, and built for long-term reliability.
+                , optimizing large-scale C++ build systems and CI pipelines for
+                Fusion. Over the past 13 years, I&rsquo;ve engineered systems for
+                enterprise platforms, airport kiosks, and high-growth SaaS.
               </p>
             </div>
 

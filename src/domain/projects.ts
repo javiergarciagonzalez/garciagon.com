@@ -25,11 +25,11 @@ export const PROJECTS: ProjectItem[] = [
     showcaseUrl: "/projects/ramentask",
     featured: true,
     description:
-      "A fast, 100% client-side web utility platform where files never leave the user's browser. Built with Hexagonal Architecture, WebAssembly engines for PDF and image processing, and internationalized pSEO across 8 languages.",
+      "A privacy-first developer utility suite where files are processed 100% in-browser using WebAssembly engines. Built with Hexagonal Architecture and internationalized across 8 languages.",
     highlights: [
-      "Client-side processing via WebAssembly (QPDF WASM, background removal WASM) ensuring complete user data privacy.",
-      "Strict Hexagonal Architecture decoupling domain manipulation logic from React UI components.",
-      "Engineered for sub-second Core Web Vitals, headless pSEO generation, and multi-locale routing.",
+      "Zero network file transfer: WASM engines process PDFs, images, and data strictly in browser memory.",
+      "Hexagonal Architecture isolating pure domain logic from React and DOM dependencies.",
+      "Fast Core Web Vitals with headless pSEO and multi-locale routing across 8 languages.",
     ],
     tags: ["Next.js", "TypeScript", "WebAssembly (WASM)", "Hexagonal Architecture", "Tailwind CSS", "pSEO"],
   },
@@ -43,11 +43,11 @@ export const PROJECTS: ProjectItem[] = [
     showcaseUrl: "/projects/home-lab",
     featured: true,
     description:
-      "A 24/7 personal infrastructure lab and private cloud managed entirely through Ansible playbooks and roles. Hosts containerized services, ZFS encrypted storage, private CI runners, Wireguard/Tailscale mesh VPN, and observability stack.",
+      "A 24/7 private cloud and testing lab automated 100% via Ansible. Runs containerized workloads, ZFS storage, private CI runners, and a WireGuard/Tailscale mesh VPN.",
     highlights: [
-      "Infrastructure-as-Code (IaC) with 40+ modular Ansible roles managing storage, networking, and microservices.",
-      "Zero-trust network architecture using Cloudflare Tunnels, Tailscale mesh VPN, and Authelia SSO.",
-      "Full observability and resilience: Prometheus, Grafana, automated Kopia snapshots, and local Ollama LLM runtime.",
+      "Infrastructure as Code: 40+ modular Ansible roles managing storage, networks, and services.",
+      "Zero-trust remote access using Cloudflare Tunnels, Tailscale mesh, and SSO.",
+      "Full observability with Prometheus & Grafana, automated off-site backups, and local AI runtimes.",
     ],
     tags: ["Ansible IaC", "Docker", "Linux (Ubuntu Server)", "ZFS", "Tailscale / Wireguard", "Prometheus & Grafana"],
   },

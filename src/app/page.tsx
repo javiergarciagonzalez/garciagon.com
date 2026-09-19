@@ -49,7 +49,7 @@ export default function Home() {
               Let&rsquo;s Connect
             </Typography.H2>
             <Typography.Body tone="muted" className="text-base sm:text-lg">
-              Whether you want to discuss distributed backend architecture, CI/CD build optimization, technical leadership, or high-scale engineering challenges, my inbox is always open.
+              Whether you want to discuss backend architecture, CI/CD optimization, consulting opportunities, or technical leadership, feel free to reach out.
             </Typography.Body>
           </div>
 

@@ -25,7 +25,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: "backend-cloud",
     name: "Backend & Distributed Systems",
-    headline: "High-throughput services, event-driven backends, and cloud orchestration",
+    headline: "High-throughput APIs, event-driven services, and cloud data stores.",
     skills: [
       { name: "TypeScript (Advanced)", level: "Core", highlight: true },
       { name: "Node.js Ecosystem", level: "Core", highlight: true },
@@ -40,7 +40,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: "cicd-devops",
     name: "CI/CD & Developer Experience",
-    headline: "Automating developer feedback loops, multi-platform builds, and delivery pipelines",
+    headline: "Automated pipelines, build optimization, and container workflows.",
     skills: [
       { name: "CI/CD Pipelines", level: "Core", highlight: true },
       { name: "C++ Build Systems CI", level: "Core", highlight: true },
@@ -53,8 +53,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     id: "frontend-wasm",
-    name: "Frontend Craftsmanship & WebAssembly",
-    headline: "Browser rendering performance, client-side WASM computing, and strict UI architecture",
+    name: "Frontend & WebAssembly",
+    headline: "Modern React architecture, client-side WASM, and high-performance UI.",
     skills: [
       { name: "React & Next.js", level: "Core", highlight: true },
       { name: "WebAssembly (WASM)", level: "Advanced", highlight: true },
@@ -66,8 +66,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     id: "architecture-leadership",
-    name: "Architecture, Testing & Leadership",
-    headline: "Domain-Driven Design, test resilience, code reviews, and engineering standards",
+    name: "Architecture & Quality",
+    headline: "Clean Architecture, thorough test automation, and code mentorship.",
     skills: [
       { name: "Clean Architecture & SOLID", level: "Core", highlight: true },
       { name: "Domain-Driven Design (DDD)", level: "Core" },
@@ -82,33 +82,15 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const EDUCATION_HISTORY: EducationItem[] = [
   {
-    id: "msc-cloud",
-    degree: "Master of Science (MSc)",
-    field: "Cloud Applications & Distributed Software",
-    institution: "Universidad Rey Juan Carlos",
-    location: "Madrid, Spain",
-    period: "2020 — 2021",
-    year: 2021,
-    description:
-      "Advanced postgraduate curriculum centered on distributed cloud computing, asynchronous micro-services in Java and Node.js, containerization, and automated DevOps infrastructure.",
-    keyTopics: [
-      "Distributed Cloud Systems",
-      "Docker & Kubernetes",
-      "DevOps Automation",
-      "Node.js & Java Services",
-      "High Availability & Resilience",
-    ],
-  },
-  {
     id: "bsc-software",
     degree: "Bachelor of Science (BSc)",
     field: "Software Engineering (Ingeniería del Software)",
     institution: "Universidad Politécnica de Madrid (UPM)",
     location: "Madrid, Spain",
-    period: "2010 — 2015",
+    period: "2015",
     year: 2015,
     description:
-      "Formal five-year computer science foundation covering algorithms, data structures, operating systems, compiler design, software architecture, and systems engineering.",
+      "Comprehensive computer science curriculum covering algorithms, data structures, operating systems, compiler design, software architecture, and systems engineering.",
     keyTopics: [
       "Software Design Patterns",
       "Algorithms & Complexity",
@@ -131,6 +113,24 @@ export const EDUCATION_HISTORY: EducationItem[] = [
       "Real-Time Systems",
       "Distributed Control",
       "Cross-Cultural Engineering Collaboration",
+    ],
+  },
+  {
+    id: "msc-cloud",
+    degree: "Master of Science (MSc)",
+    field: "Cloud Applications & Distributed Software",
+    institution: "Universidad Rey Juan Carlos (URJC)",
+    location: "Madrid, Spain",
+    period: "2021",
+    year: 2021,
+    description:
+      "Postgraduate curriculum centered on distributed cloud computing, asynchronous microservices, containerization, and automated DevOps infrastructure.",
+    keyTopics: [
+      "Distributed Cloud Systems",
+      "Docker & Kubernetes",
+      "DevOps Automation",
+      "Node.js & Java Services",
+      "High Availability & Resilience",
     ],
   },
 ];

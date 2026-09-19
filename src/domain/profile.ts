@@ -10,7 +10,7 @@ export function getExperienceTag(): string {
 
 export function getBioSummary(): string {
   const years = getYearsOfExperience();
-  return `${years}+ years of engineering experience building scalable web services, high-performance distributed systems, and robust CI/CD environments.`;
+  return `Senior Full Stack Engineer with ${years}+ years of experience building reliable backend services, CI/CD build infrastructure, and modern web platforms.`;
 }
 
 export const PROFILE = {

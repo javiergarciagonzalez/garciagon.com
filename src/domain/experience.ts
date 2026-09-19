@@ -35,12 +35,11 @@ export const EXPERIENCES: ExperienceItem[] = [
     featured: true,
     category: "Enterprise",
     summary:
-      "Driving technical decision-making within the Fusion CI team, optimizing build systems, continuous integration pipelines, and developer experience for large-scale C++ and cloud environments.",
+      "Building high-throughput CI/CD pipelines and developer tooling for Autodesk Fusion, supporting large-scale C++ and cloud compilation environments.",
     impacts: [
-      "Architect and maintain high-throughput CI/CD pipelines supporting complex C++ builds and multi-platform compilation environments.",
-      "Spearhead developer experience (DevEx) initiatives that measurably decrease build cycle times and accelerate engineering feedback loops.",
-      "Combine deep TypeScript & Node.js backend engineering with cloud infrastructure to ensure high reliability, type safety, and clean architecture.",
-      "Provide technical leadership, code review mentorship, and architectural governance across distributed international teams.",
+      "Optimize multi-platform C++ build pipelines, measurably shortening developer feedback loops and CI cycle times.",
+      "Build reliable TypeScript & Node.js automation services integrated with cloud build infrastructure.",
+      "Mentor distributed engineering teams through technical reviews and CI/CD architecture standards.",
     ],
     skills: [
       "TypeScript",
@@ -67,12 +66,11 @@ export const EXPERIENCES: ExperienceItem[] = [
     featured: true,
     category: "Product & Growth",
     summary:
-      "Core contributor to the Growth engineering team, executing rapid-fire A/B experimentation and re-architecting public-facing surfaces for extreme scalability and sign-up conversion.",
+      "Engineered public signup flows and rapid A/B experimentation within the Growth team, optimizing user onboarding and conversion.",
     impacts: [
-      "Executed continuous multivariate A/B testing initiatives directly driving sign-up conversion and onboarding flow improvements.",
-      "Re-architected and simplified frontend micro-services infrastructure, substantially reducing REST roundtrips and latency.",
-      "Engineered comprehensive smoke test suites and production monitoring across server-side and client-side web applications.",
-      "Instituted automated quality gates using Jest, Testing Library, Cypress, and modern GitHub Actions workflows.",
+      "Shipped multivariate A/B experiments that measurably increased signup completion and onboarding velocity.",
+      "Refactored frontend micro-services to reduce REST roundtrips and improve page load times.",
+      "Automated test pipelines using Jest, Testing Library, Cypress, and GitHub Actions.",
     ],
     skills: [
       "Next.js",
@@ -101,13 +99,11 @@ export const EXPERIENCES: ExperienceItem[] = [
     featured: true,
     category: "Aviation & Systems",
     summary:
-      "Four-year leadership role in Amsterdam Airport's digital innovation unit. Led migration from a monolithic legacy stack to a modern micro-services ecosystem, including hardware-integrated terminal kiosks.",
+      "Led frontend modernization for Amsterdam Airport Schiphol, transitioning monolithic web surfaces to micro-frontends and physical passenger kiosks.",
     impacts: [
-      "Led the architectural migration of Schiphol's core digital presence from a legacy monolith into a resilient micro-services and micro-frontends ecosystem.",
-      "Designed and deployed the Self Service Unit kiosk system, replacing physical personal assistance with real-time flight tracking, airport wayfinding, and live video support.",
-      "Engineered the Short Connection Unit physical kiosks, automatically printing expedited security transit passes for tight connecting passengers (<60 min).",
-      "Created an internal component monorepo published to NPM, bridging the multi-year transitional redesign seamlessly across 10+ agile teams.",
-      "Expanded T-shaped responsibilities into DevOps, containerizing applications with Docker and deploying onto Kubernetes clusters via automated CI/CD.",
+      "Architected the airport's Self Service Units (SSU), replacing staffed counters with interactive wayfinding and live flight updates.",
+      "Built the Short Connection Unit kiosks to automatically print expedited security transit passes for tight layovers.",
+      "Created a shared component library published to NPM to unify UI across 10+ agile teams.",
     ],
     skills: [
       "React",
@@ -136,10 +132,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     featured: false,
     category: "Early Career",
     summary:
-      "Crafted high-fidelity creative digital platforms and campaigns for international enterprise brands, focusing on pixel-perfect fidelity, high-frame-rate animation, and strict cross-browser performance.",
+      "Developed high-performance creative web applications and campaign platforms for international brands.",
     impacts: [
-      "Delivered performance-critical interactive web applications with sub-second load times and 60fps animations.",
-      "Collaborated tightly with design teams to translate complex creative concepts into production-grade, accessible code.",
+      "Delivered interactive canvas and 60fps web experiences with strict cross-browser compatibility.",
+      "Partnered directly with design teams to translate complex animations into accessible, performant code.",
     ],
     skills: [
       "JavaScript (ES6+)",
@@ -163,10 +159,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     featured: false,
     category: "Early Career",
     summary:
-      "Built client-side digital reading and e-commerce platforms for consumer hardware ecosystems while concluding software engineering bachelor degree.",
+      "Developed client-side e-commerce and digital reading web applications for BQ hardware devices.",
     impacts: [
-      "Developed web-based book reader client using modern Polymer web components and subscription subscription APIs.",
-      "Contributed to the frontend infrastructure powering digital services across BQ's smartphone and tablet product lines.",
+      "Built an in-browser book reader application using early Web Components (Polymer) and subscription APIs.",
+      "Maintained frontend infrastructure supporting digital services across smartphone and tablet lines.",
     ],
     skills: [
       "JavaScript",
@@ -189,10 +185,10 @@ export const EXPERIENCES: ExperienceItem[] = [
     featured: false,
     category: "Early Career",
     summary:
-      "First software engineering role within an on-campus university startup incubator, building personal fitness training interfaces and learning core web development foundations.",
+      "First software engineering internship, developing interactive client tracking and mapping tools for an early-stage fitness startup.",
     impacts: [
-      "Programmed interactive map and client tracking modules integrating Google Maps API and early single-page application patterns.",
-      "Established foundational mastery of the DOM, semantic HTML, CSS, and version control with Git.",
+      "Integrated Google Maps API with dynamic single-page training schedules.",
+      "Gained foundational experience in semantic DOM manipulation, CSS, and Git collaboration.",
     ],
     skills: [
       "JavaScript",
