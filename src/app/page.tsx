@@ -10,6 +10,8 @@ import { ConsultingSection } from "@/shared/components/ConsultingSection";
 import { SkillsAndEducation } from "@/shared/components/SkillsAndEducation";
 import { ProjectsSection } from "@/shared/components/ProjectsSection";
 import { CopyEmailButton } from "@/shared/components/CopyEmailButton";
+import { SpotlightCard } from "@/shared/components/SpotlightCard";
+import { FadeIn } from "@/shared/components/FadeIn";
 import { PROFILE } from "@/domain/profile";
 import {
   EnvelopeSimple,
@@ -36,53 +38,57 @@ export default function Home() {
       <ProjectsSection />
 
       {/* 5. Contact Section */}
-      <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16 pb-12">
-        <Container size="xl" className="space-y-8">
-          <div className="max-w-2xl space-y-4">
-            <div className="flex items-center gap-2 mb-2">
-              <EnvelopeSimple size={18} className="text-muted-foreground" />
-              <Typography.Subtle className="font-mono uppercase tracking-widest text-xs text-muted-foreground">
-                Direct Communication
-              </Typography.Subtle>
-            </div>
-            <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-              Let&rsquo;s Connect
-            </Typography.H2>
-            <Typography.Body tone="muted" className="text-base sm:text-lg">
-              Whether you want to discuss backend architecture, CI/CD optimization, consulting opportunities, or technical leadership, feel free to reach out.
-            </Typography.Body>
-          </div>
+      <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16 pb-16">
+        <Container size="xl">
+          <FadeIn>
+            <SpotlightCard className="p-8 sm:p-12 space-y-8">
+              <div className="max-w-2xl space-y-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <EnvelopeSimple size={18} className="text-muted-foreground" />
+                  <Typography.Subtle className="font-mono uppercase tracking-widest text-xs text-muted-foreground">
+                    Direct Communication
+                  </Typography.Subtle>
+                </div>
+                <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                  Let&rsquo;s Connect
+                </Typography.H2>
+                <Typography.Body tone="muted" className="text-base sm:text-lg">
+                  Whether you want to discuss backend architecture, CI/CD optimization, consulting opportunities, or technical leadership, feel free to reach out.
+                </Typography.Body>
+              </div>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <CopyEmailButton variant="primary" size="md" />
-            <Button
-              variant="outline"
-              href={`mailto:${PROFILE.email}`}
-              leftIcon={<EnvelopeSimple size={16} />}
-            >
-              Open in Mail
-            </Button>
-            <Button
-              variant="secondary"
-              href={PROFILE.socials.linkedin}
-              external
-              rightIcon={<ArrowSquareOut size={16} />}
-            >
-              LinkedIn Profile
-            </Button>
-            <Button
-              variant="secondary"
-              href={PROFILE.socials.github}
-              external
-              rightIcon={<ArrowSquareOut size={16} />}
-            >
-              GitHub Profile
-            </Button>
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono ml-auto">
-              <MapPin size={14} className="text-foreground" />
-              <span>{PROFILE.location} &middot; {PROFILE.workMode}</span>
-            </div>
-          </div>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <CopyEmailButton variant="primary" size="md" />
+                <Button
+                  variant="outline"
+                  href={`mailto:${PROFILE.email}`}
+                  leftIcon={<EnvelopeSimple size={16} />}
+                >
+                  Open in Mail
+                </Button>
+                <Button
+                  variant="secondary"
+                  href={PROFILE.socials.linkedin}
+                  external
+                  rightIcon={<ArrowSquareOut size={16} />}
+                >
+                  LinkedIn Profile
+                </Button>
+                <Button
+                  variant="secondary"
+                  href={PROFILE.socials.github}
+                  external
+                  rightIcon={<ArrowSquareOut size={16} />}
+                >
+                  GitHub Profile
+                </Button>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono sm:ml-auto pt-2 sm:pt-0">
+                  <MapPin size={14} className="text-foreground" />
+                  <span>{PROFILE.location} &middot; {PROFILE.workMode}</span>
+                </div>
+              </div>
+            </SpotlightCard>
+          </FadeIn>
         </Container>
       </section>
     </main>

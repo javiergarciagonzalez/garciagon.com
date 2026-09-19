@@ -1,10 +1,10 @@
-"use client";
-
 import * as React from "react";
 import Image from "next/image";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
 import { TechBadge } from "./TechBadge";
+import { SpotlightCard } from "./SpotlightCard";
+import { FadeIn } from "./FadeIn";
 import { EXPERIENCES } from "@/domain/experience";
 import {
   Briefcase,
@@ -31,7 +31,7 @@ export function ExperienceTimeline() {
     >
       <Container size="xl" className="space-y-12">
         {/* Section Header with View Switcher */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-border/60">
+        <FadeIn className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-border/60">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="p-1.5 rounded-md bg-muted text-foreground">
@@ -78,21 +78,21 @@ export function ExperienceTimeline() {
               <span>Git Graph</span>
             </button>
           </div>
-        </div>
+        </FadeIn>
 
         {/* ------------------------------------------------------------- */}
         {/* VIEW 1: EDITORIAL CHRONOLOGICAL LEDGER (NO CARDS)              */}
         {/* ------------------------------------------------------------- */}
         {viewMode === "ledger" ? (
           <div className="divide-y divide-border/60">
-            {EXPERIENCES.map((exp) => {
+            {EXPERIENCES.map((exp, index) => {
               const isCurrent = exp.endYear === "Present";
 
               return (
-                <article
-                  key={exp.id}
-                  className="py-10 first:pt-2 last:pb-2 transition-colors group"
-                >
+                <FadeIn key={exp.id} delay={index * 0.06}>
+                  <article
+                    className="py-10 first:pt-2 last:pb-2 transition-colors group"
+                  >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                     {/* Left Column: Metadata & Tenure (4 cols) */}
                     <div className="lg:col-span-4 space-y-3">
@@ -181,14 +181,20 @@ export function ExperienceTimeline() {
                     </div>
                   </div>
                 </article>
-              );
-            })}
-          </div>
-        ) : (
-          /* ------------------------------------------------------------- */
-          /* VIEW 2: MONOSPACE GIT GRAPH TERMINAL                          */
-          /* ------------------------------------------------------------- */
-          <div className="rounded-2xl border border-border bg-[#0d1117] text-zinc-300 p-6 sm:p-8 font-mono shadow-xl space-y-6">
+              </FadeIn>
+            );
+          })}
+        </div>
+      ) : (
+        /* ------------------------------------------------------------- */
+        /* VIEW 2: MONOSPACE GIT GRAPH TERMINAL                          */
+        /* ------------------------------------------------------------- */
+        <FadeIn>
+          <SpotlightCard
+            spotlightColor="rgba(16, 185, 129, 0.08)"
+            borderColor="rgba(52, 211, 153, 0.3)"
+            className="rounded-2xl border border-border bg-[#0d1117] text-zinc-300 p-6 sm:p-8 font-mono shadow-2xl space-y-6"
+          >
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 pb-4 text-xs">
               <div className="flex items-center gap-2 text-zinc-400">
                 <Terminal size={16} className="text-emerald-400" />
@@ -219,29 +225,29 @@ export function ExperienceTimeline() {
                         : "border-zinc-800/80 bg-zinc-900/40 hover:border-zinc-700 hover:bg-zinc-900/70"
                     )}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs mb-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-emerald-400 font-bold">* {commitHash}</span>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-emerald-400 font-bold">*</span>
+                        <span className="text-zinc-400 font-mono text-xs">{commitHash}</span>
+                        <span className="font-semibold text-zinc-100">{exp.role}</span>
+                        <span className="text-zinc-500">@</span>
+                        <span className="text-emerald-300">{exp.company}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-zinc-500 font-mono">
                         {isHead && (
-                          <span className="px-2 py-0.2 rounded bg-emerald-500/20 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
-                            HEAD (current)
+                          <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                            HEAD
                           </span>
                         )}
-                        <span className="text-zinc-400">({exp.period})</span>
+                        <span>{exp.period}</span>
                       </div>
-                      <span className="text-zinc-500">{exp.location}</span>
                     </div>
 
-                    <div className="space-y-1.5">
-                      <h4 className="text-sm font-bold text-zinc-100">
-                        feat({exp.company.toLowerCase()}): {exp.role}
-                      </h4>
-                      <p className="text-xs text-zinc-400 font-sans leading-relaxed">
-                        {exp.summary}
-                      </p>
-                    </div>
+                    <p className="mt-2 text-xs text-zinc-400 line-clamp-2 pl-4 border-l border-zinc-800">
+                      {exp.summary}
+                    </p>
 
-                    <div className="flex flex-wrap items-center gap-1.5 pt-3 mt-3 border-t border-zinc-800/60">
+                    <div className="mt-3 flex flex-wrap gap-1.5 pl-4">
                       {exp.skills.map((skill) => (
                         <span
                           key={skill}
@@ -255,8 +261,9 @@ export function ExperienceTimeline() {
                 );
               })}
             </div>
-          </div>
-        )}
+          </SpotlightCard>
+        </FadeIn>
+      )}
       </Container>
     </section>
   );

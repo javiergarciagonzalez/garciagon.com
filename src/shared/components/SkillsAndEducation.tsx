@@ -2,6 +2,8 @@ import * as React from "react";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
 import { TechBadge } from "./TechBadge";
+import { SpotlightCard } from "./SpotlightCard";
+import { FadeIn } from "./FadeIn";
 import {
   SKILL_CATEGORIES,
   EDUCATION_HISTORY,
@@ -22,7 +24,7 @@ export function SkillsAndEducation() {
         {/* 1. TECHNICAL ARSENAL & ARCHITECTURAL COMPETENCIES                 */}
         {/* ================================================================= */}
         <div className="space-y-10">
-          <div className="space-y-2 max-w-2xl">
+          <FadeIn className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="p-1.5 rounded-md bg-muted text-foreground">
                 <Wrench size={16} />
@@ -37,34 +39,33 @@ export function SkillsAndEducation() {
             <Typography.Body tone="muted" className="text-base">
               Core competencies spanning scalable backend services, C++ CI automation, and browser performance.
             </Typography.Body>
-          </div>
+          </FadeIn>
 
-          {/* Clean 2-Column Editorial Grid (No Cards) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
-            {SKILL_CATEGORIES.map((cat: SkillCategory) => (
-              <div
-                key={cat.id}
-                className="space-y-4 pb-8 border-b border-border/60 last:border-b-0 lg:last:border-b-0"
-              >
-                <div>
-                  <h3 className="text-lg font-bold tracking-tight text-foreground">
-                    {cat.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {cat.headline}
-                  </p>
-                </div>
+          {/* Clean 2-Column Spotlight Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {SKILL_CATEGORIES.map((cat: SkillCategory, index: number) => (
+              <FadeIn key={cat.id} delay={index * 0.08}>
+                <SpotlightCard className="h-full space-y-4 p-6 sm:p-7">
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-foreground">
+                      {cat.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {cat.headline}
+                    </p>
+                  </div>
 
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {cat.skills.map((skill) => (
-                    <TechBadge
-                      key={skill.name}
-                      name={skill.name}
-                      highlight={skill.highlight}
-                    />
-                  ))}
-                </div>
-              </div>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {cat.skills.map((skill) => (
+                      <TechBadge
+                        key={skill.name}
+                        name={skill.name}
+                        highlight={skill.highlight}
+                      />
+                    ))}
+                  </div>
+                </SpotlightCard>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -73,7 +74,7 @@ export function SkillsAndEducation() {
         {/* 2. ACADEMIC CREDENTIALS & FORMAL EDUCATION (EDITORIAL RESUME)      */}
         {/* ================================================================= */}
         <div className="space-y-8 pt-12 border-t border-border/60">
-          <div className="space-y-2 max-w-2xl">
+          <FadeIn className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="p-1.5 rounded-md bg-muted text-foreground">
                 <GraduationCap size={16} />
@@ -88,13 +89,14 @@ export function SkillsAndEducation() {
             <Typography.Body tone="muted" className="text-sm sm:text-base">
               Formal software engineering education from Madrid&rsquo;s leading engineering institutions.
             </Typography.Body>
-          </div>
+          </FadeIn>
 
           {/* Editorial Academic Ledger (Zero Pricing Cards, Zero Hype Pills) */}
           <div className="divide-y divide-border/60">
-            {EDUCATION_HISTORY.map((edu) => (
-              <article key={edu.id} className="py-8 first:pt-2 last:pb-0">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {EDUCATION_HISTORY.map((edu, index) => (
+              <FadeIn key={edu.id} delay={index * 0.08}>
+                <article className="py-8 first:pt-2 last:pb-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Left Column: Degree & University (5 cols) */}
                   <div className="lg:col-span-5 space-y-1.5">
                     <h3 className="text-base sm:text-lg font-bold text-foreground tracking-tight">
@@ -137,7 +139,8 @@ export function SkillsAndEducation() {
                   </div>
                 </div>
               </article>
-            ))}
+            </FadeIn>
+          ))}
           </div>
         </div>
       </Container>

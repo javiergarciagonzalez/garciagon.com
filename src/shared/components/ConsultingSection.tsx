@@ -1,10 +1,10 @@
-"use client";
-
 import * as React from "react";
 import Image from "next/image";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
 import { TechBadge } from "./TechBadge";
+import { SpotlightCard } from "./SpotlightCard";
+import { FadeIn } from "./FadeIn";
 import { CONSULTING_ENGAGEMENTS } from "@/domain/consulting";
 import {
   Compass,
@@ -21,7 +21,7 @@ export function ConsultingSection() {
     >
       <Container size="xl" className="space-y-12">
         {/* Section Header */}
-        <div className="space-y-3 max-w-2xl">
+        <FadeIn className="space-y-3 max-w-2xl">
           <div className="flex items-center gap-2">
             <span className="p-1.5 rounded-md bg-muted text-foreground">
               <Compass size={16} />
@@ -37,15 +37,13 @@ export function ConsultingSection() {
             Advising engineering teams on cloud CI/CD automation, distributed
             data architectures, and specialized 3D BIM &amp; Digital Twin platforms.
           </Typography.Body>
-        </div>
+        </FadeIn>
 
-        {/* Engagements Ledger */}
-        <div className="divide-y divide-border/60">
-          {CONSULTING_ENGAGEMENTS.map((item) => (
-            <article
-              key={item.id}
-              className="py-10 first:pt-2 last:pb-2 transition-colors group"
-            >
+        {/* Engagements Spotlight Container */}
+        <div className="space-y-6">
+          {CONSULTING_ENGAGEMENTS.map((item, index) => (
+            <FadeIn key={item.id} delay={index * 0.1}>
+              <SpotlightCard className="p-6 sm:p-8 lg:p-10">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                 {/* Left Column: Client, Role & Metadata (4 cols) */}
                 <div className="lg:col-span-4 space-y-3">
@@ -142,8 +140,9 @@ export function ConsultingSection() {
                   </div>
                 </div>
               </div>
-            </article>
-          ))}
+            </SpotlightCard>
+          </FadeIn>
+        ))}
         </div>
       </Container>
     </section>

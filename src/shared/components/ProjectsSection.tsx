@@ -4,6 +4,9 @@ import * as React from "react";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
 import { Button } from "./Button";
+import { SpotlightCard } from "./SpotlightCard";
+import { FadeIn } from "./FadeIn";
+import { TechBadge } from "./TechBadge";
 import { PROJECTS, type ProjectItem } from "@/domain/projects";
 import {
   FolderSimple,
@@ -16,7 +19,7 @@ export function ProjectsSection() {
     <section id="projects" className="scroll-mt-24 pt-16 pb-20 border-t border-border/60">
       <Container size="xl" className="space-y-12">
         {/* Section Header */}
-        <div className="space-y-2 max-w-2xl">
+        <FadeIn className="space-y-2 max-w-2xl">
           <div className="flex items-center gap-2">
             <span className="p-1.5 rounded-md bg-muted text-foreground">
               <FolderSimple size={16} />
@@ -31,16 +34,14 @@ export function ProjectsSection() {
           <Typography.Body tone="muted" className="text-base">
             Production web platforms and bare-metal infrastructure engineered outside of corporate responsibilities.
           </Typography.Body>
-        </div>
+        </FadeIn>
 
-        {/* Projects Editorial Layout (No Card Soup) */}
-        <div className="divide-y divide-border/60">
-          {PROJECTS.map((project: ProjectItem) => {
+        {/* Projects Spotlight Cards */}
+        <div className="space-y-6">
+          {PROJECTS.map((project: ProjectItem, index: number) => {
             return (
-              <article
-                key={project.id}
-                className="py-10 first:pt-2 last:pb-0"
-              >
+              <FadeIn key={project.id} delay={index * 0.1}>
+                <SpotlightCard className="p-6 sm:p-8 lg:p-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
                   {/* Left Column: Title, Subtitle, Status & Actions (5 cols) */}
                   <div className="lg:col-span-5 space-y-4">
@@ -113,19 +114,15 @@ export function ProjectsSection() {
                         Technologies:
                       </span>
                       {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center px-2 py-0.5 rounded bg-muted/50 text-xs font-mono text-muted-foreground border border-border/50"
-                        >
-                          {tag}
-                        </span>
+                        <TechBadge key={tag} name={tag} size="sm" />
                       ))}
                     </div>
                   </div>
                 </div>
-              </article>
-            );
-          })}
+              </SpotlightCard>
+            </FadeIn>
+          );
+        })}
         </div>
       </Container>
     </section>

@@ -3,13 +3,14 @@ import Image from "next/image";
 import { Container } from "./Container";
 import { Typography } from "./Typography";
 import { Button } from "./Button";
+import { FadeIn } from "./FadeIn";
 import { PROFILE } from "@/domain/profile";
 import {
   ArrowRight,
   EnvelopeSimple,
   ArrowSquareOut,
   MapPin,
-} from "@phosphor-icons/react/dist/ssr";
+} from "@phosphor-icons/react";
 
 export function Hero() {
   return (
@@ -17,7 +18,7 @@ export function Hero() {
       <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
           {/* Left / Main Narrative Column (7 cols) */}
-          <div className="lg:col-span-7 space-y-8">
+          <FadeIn duration={650} className="lg:col-span-7 space-y-8">
             {/* Name & Headline */}
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
@@ -92,10 +93,14 @@ export function Hero() {
                 GitHub
               </Button>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right Column: Warm Circular Avatar with Ambient Halo & Live Status (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center">
+          <FadeIn
+            duration={750}
+            delay={0.15}
+            className="lg:col-span-5 flex justify-center lg:justify-end items-center"
+          >
             <div className="relative group">
               {/* Soft Ambient Halo */}
               <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-foreground/10 via-foreground/5 to-transparent blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
@@ -123,7 +128,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </Container>
     </section>
