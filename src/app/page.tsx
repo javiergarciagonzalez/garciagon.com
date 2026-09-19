@@ -6,6 +6,7 @@ import { Typography } from "@/shared/components/Typography";
 import { Button } from "@/shared/components/Button";
 import { Hero } from "@/shared/components/Hero";
 import { ExperienceTimeline } from "@/shared/components/ExperienceTimeline";
+import { ConsultingSection } from "@/shared/components/ConsultingSection";
 import { SkillsAndEducation } from "@/shared/components/SkillsAndEducation";
 import { ProjectsSection } from "@/shared/components/ProjectsSection";
 import { CopyEmailButton } from "@/shared/components/CopyEmailButton";
@@ -25,7 +26,10 @@ export default function Home() {
       {/* 2. Interactive Work Experience Timeline ("Wow" Effect) */}
       <ExperienceTimeline />
 
-      {/* 3. Skills, Architecture & Education Section */}
+      {/* 3. External Consulting & Technical Advisory (Ingreen Innovación) */}
+      <ConsultingSection />
+
+      {/* 4. Skills, Architecture & Education Section */}
       <SkillsAndEducation />
 
       {/* 4. Side Projects, RamenTask & Engineering Lab */}
