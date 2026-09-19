@@ -18,7 +18,7 @@ import {
 
 export function SkillsAndEducation() {
   return (
-    <section id="skills" className="scroll-mt-24 pt-16 pb-20 border-t border-border/60">
+    <section id="skills" className="scroll-mt-24 py-20 sm:py-24 border-t border-border/60">
       <Container size="xl" className="space-y-20">
         {/* ================================================================= */}
         {/* 1. TECHNICAL ARSENAL & ARCHITECTURAL COMPETENCIES                 */}
@@ -34,7 +34,7 @@ export function SkillsAndEducation() {
               </Typography.Subtle>
             </div>
             <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Technical Arsenal
+              Skills
             </Typography.H2>
             <Typography.Body tone="muted" className="text-base">
               Core competencies spanning scalable backend services, C++ CI automation, and browser performance.

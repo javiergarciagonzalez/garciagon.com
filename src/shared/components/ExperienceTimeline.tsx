@@ -27,7 +27,7 @@ export function ExperienceTimeline() {
   return (
     <section
       id="experience"
-      className="scroll-mt-24 pt-16 pb-20 border-t border-border/60"
+      className="scroll-mt-24 py-20 sm:py-24 border-t border-border/60"
     >
       <Container size="xl" className="space-y-12">
         {/* Section Header with View Switcher */}
@@ -42,7 +42,7 @@ export function ExperienceTimeline() {
               </Typography.Subtle>
             </div>
             <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Work Experience
+              Experience
             </Typography.H2>
             <Typography.Body tone="muted" className="text-base">
               13 years of full-stack engineering, continuous integration, and distributed systems.

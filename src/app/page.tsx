@@ -21,7 +21,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="space-y-16 sm:space-y-24">
+    <main>
       {/* 1. Hero & Professional Intro Section */}
       <Hero />
 
@@ -38,7 +38,7 @@ export default function Home() {
       <ProjectsSection />
 
       {/* 5. Contact Section */}
-      <section id="contact" className="scroll-mt-24 border-t border-border/60 pt-16 pb-16">
+      <section id="contact" className="scroll-mt-24 border-t border-border/60 py-20 sm:py-24">
         <Container size="xl">
           <FadeIn>
             <SpotlightCard className="p-8 sm:p-12 space-y-8">
@@ -50,7 +50,7 @@ export default function Home() {
                   </Typography.Subtle>
                 </div>
                 <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-                  Let&rsquo;s Connect
+                  Contact
                 </Typography.H2>
                 <Typography.Body tone="muted" className="text-base sm:text-lg">
                   Whether you want to discuss backend architecture, CI/CD optimization, consulting opportunities, or technical leadership, feel free to reach out.

@@ -36,7 +36,7 @@ export const CONSULTING_ENGAGEMENTS: ConsultingEngagement[] = [
     workMode: "Remote",
     scope: "BIM Common Data Environment (CDE) & 3D Digital Twin Platform",
     summary:
-      "Hired as an independent technical consultant to establish modern cloud CI/CD pipelines, guide the frontend team, and develop 3D BIM & Digital Twin platforms for public infrastructure projects.",
+      "Hired as an independent technical consultant to establish modern cloud CI/CD pipelines, guide the development team, and develop 3D BIM & Digital Twin platforms for public infrastructure projects.",
     deliverables: [
       {
         title: "Docker & Azure CI/CD",

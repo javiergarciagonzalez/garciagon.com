@@ -47,7 +47,7 @@ export function Hero() {
   };
 
   return (
-    <section id="about" className="relative pt-8 sm:pt-14 pb-16 scroll-mt-24">
+    <section id="about" className="relative pt-12 pb-20 sm:pt-16 sm:pb-24 scroll-mt-24">
       <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
           {/* Left / Main Narrative Column (7 cols) */}

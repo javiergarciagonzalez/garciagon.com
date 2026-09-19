@@ -20,7 +20,7 @@ import {
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="scroll-mt-24 pt-16 pb-20 border-t border-border/60">
+    <section id="projects" className="scroll-mt-24 py-20 sm:py-24 border-t border-border/60">
       <Container size="xl" className="space-y-12">
         {/* Section Header */}
         <FadeIn className="space-y-2 max-w-2xl">
@@ -33,7 +33,7 @@ export function ProjectsSection() {
             </Typography.Subtle>
           </div>
           <Typography.H2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Side projects
+            Projects
           </Typography.H2>
           <Typography.Body tone="muted" className="text-base">
             Production web platforms and bare-metal infrastructure engineered outside of corporate responsibilities.
