@@ -8,6 +8,8 @@ export interface ProjectItem {
   highlights: string[];
   tags: string[];
   status: "Live" | "Self-Hosted";
+  logo?: string;
+  iconName?: "HardDrives" | "Cpu" | "Terminal";
   externalLink?: string;
   showcaseUrl: string;
   featured?: boolean;
@@ -21,6 +23,7 @@ export const PROJECTS: ProjectItem[] = [
     subtitle: "Privacy-first, in-browser developer utilities & productivity suite",
     badge: "Production SaaS & pSEO",
     status: "Live",
+    logo: "/images/projects/ramentask.svg",
     externalLink: "https://ramentask.com",
     showcaseUrl: "/projects/ramentask",
     featured: true,
@@ -40,6 +43,7 @@ export const PROJECTS: ProjectItem[] = [
     subtitle: "Automated bare-metal infrastructure managed 100% via Ansible IaC",
     badge: "Infrastructure as Code",
     status: "Self-Hosted",
+    iconName: "HardDrives",
     showcaseUrl: "/projects/home-lab",
     featured: true,
     description:

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/shared/components/Container";
 import { Typography } from "@/shared/components/Typography";
 import { Button } from "@/shared/components/Button";
@@ -46,14 +47,26 @@ export default function RamenTaskShowcasePage() {
         {/* Project Header */}
         <div className="space-y-6 max-w-3xl pb-10 border-b border-border/60">
           <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
             <span>Production SaaS &middot; Live</span>
           </div>
 
-          <div className="space-y-2">
-            <Typography.H1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-              RamenTask
-            </Typography.H1>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white p-1.5 shrink-0 shadow-xs">
+                <Image
+                  src="/images/projects/ramentask.svg"
+                  alt="RamenTask logo"
+                  width={32}
+                  height={32}
+                  className="h-7 w-7 object-contain"
+                  priority
+                />
+              </div>
+              <Typography.H1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+                RamenTask
+              </Typography.H1>
+            </div>
             <p className="text-xl sm:text-2xl font-semibold text-foreground/90 tracking-tight">
               In-browser, privacy-first developer utilities &amp; productivity suite.
             </p>
@@ -74,116 +87,102 @@ export default function RamenTaskShowcasePage() {
             </Button>
             <Button
               variant="secondary"
-              href="/#contact"
+              href="https://github.com/javiergarciagonzalez"
+              external
+              rightIcon={<ArrowSquareOut size={16} />}
             >
-              Discuss Architecture
+              Related Repositories
             </Button>
           </div>
         </div>
 
-        {/* Section 1: The Core Thesis: In-Browser WASM */}
-        <section className="space-y-6 pb-12 border-b border-border/60">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              <ShieldCheck size={16} className="text-emerald-500" />
-              <span>Architectural Principle 01</span>
-            </div>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Zero-Cloud Privacy &amp; WebAssembly Computing
-            </Typography.H2>
+        {/* Architecture Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Architectural Pillars (8 cols) */}
+          <div className="lg:col-span-8 space-y-12">
+            {/* Pillar 1: WASM & Pure Client-Side Execution */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={20} className="text-emerald-500" />
+                <Typography.H3 className="text-xl font-bold">
+                  Zero-Cloud Execution &amp; Memory-Safe Processing
+                </Typography.H3>
+              </div>
+              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm sm:text-base font-sans">
+                <p>
+                  Most free online utility tools (PDF mergers, file converters, JSON linters) quietly upload sensitive documents to remote servers for processing. This creates massive corporate data-leak exposure and regulatory compliance risks.
+                </p>
+                <p>
+                  RamenTask operates completely on client devices. Heavy operations (e.g., merging encrypted 100MB PDF bundles or running syntax transformations) execute in-browser using compiled WebAssembly binaries (such as native QPDF). Files never leave the user&rsquo;s physical RAM.
+                </p>
+              </div>
+            </section>
+
+            {/* Pillar 2: Hexagonal Architecture */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Code size={20} className="text-blue-500" />
+                <Typography.H3 className="text-xl font-bold">
+                  Hexagonal Architecture (Ports &amp; Adapters)
+                </Typography.H3>
+              </div>
+              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm sm:text-base font-sans">
+                <p>
+                  Every utility tool follows a strict Ports and Adapters pattern. The business logic (e.g., token parsing, unit arithmetic, syntax transformation) resides in pure TypeScript domain modules with 0 React or DOM dependencies.
+                </p>
+                <p>
+                  React components serve solely as presentation adapters. This separation allows domain logic to be executed equivalently in web workers, automated test runners (Jest), or headless CLI tools without UI coupling.
+                </p>
+              </div>
+            </section>
+
+            {/* Pillar 3: High-Yield pSEO Engine */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Stack size={20} className="text-amber-500" />
+                <Typography.H3 className="text-xl font-bold">
+                  Headless Programmatic SEO &amp; i18n
+                </Typography.H3>
+              </div>
+              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm sm:text-base font-sans">
+                <p>
+                  To achieve organic reach without massive ad budgets, RamenTask leverages a high-yield programmatic SEO architecture. Each tool generates static, localized landing pages across 8 languages (English, Spanish, French, German, Italian, Japanese, Chinese, and Korean).
+                </p>
+                <p>
+                  Pages achieve sub-second First Contentful Paint (FCP) by serving static HTML shells with localized metadata, JSON-LD structured schema markup, and lazy-loaded WebAssembly engines on user interaction.
+                </p>
+              </div>
+            </section>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sm sm:text-base text-muted-foreground leading-relaxed font-sans">
-            <div className="lg:col-span-6 space-y-4">
-              <p>
-                Standard online conversion utilities route user documents through cloud servers, introducing latency, cloud compute expenses, and serious data privacy risks.
-              </p>
-              <p>
-                RamenTask eliminates this entire attack surface by compiling heavy-duty C++ and Rust engines into <strong className="text-foreground font-semibold">WebAssembly (WASM)</strong>. Operations such as PDF linearization, schema formatting, and byte conversions execute directly inside the user&rsquo;s browser thread.
-              </p>
-            </div>
-            <div className="lg:col-span-6 space-y-4">
-              <p>
-                Because no data ever leaves browser memory, the platform guarantees complete user confidentiality by design—eliminating GDPR liability, backend storage servers, and data egress costs.
-              </p>
-              <div className="p-4 rounded-lg bg-muted/50 border border-border/60 font-mono text-xs text-foreground/80 space-y-1">
-                <span className="text-muted-foreground block">{"// Data Flow Guarantee:"}</span>
-                <p>Input (User Disk) &rarr; Browser RAM (WASM Engine) &rarr; Output (User Disk)</p>
-                <p className="text-emerald-600 dark:text-emerald-400">Network egress payload: 0 bytes</p>
+          {/* Right Column: Architectural Spec Ledger (4 cols) */}
+          <div className="lg:col-span-4">
+            <div className="rounded-2xl border border-border bg-surface p-6 space-y-6 sticky top-24">
+              <div className="space-y-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                  Specification
+                </span>
+                <h4 className="text-lg font-bold text-foreground">
+                  Technical Ledger
+                </h4>
+              </div>
+
+              <div className="divide-y divide-border/60">
+                {STACK_SPEC.map((item, idx) => (
+                  <div key={idx} className="py-3 space-y-1">
+                    <div className="flex items-center justify-between text-xs font-mono">
+                      <span className="text-muted-foreground">{item.category}</span>
+                      <span className="text-foreground font-semibold">{item.tech}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground font-sans">
+                      {item.detail}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Section 2: Hexagonal Architecture */}
-        <section className="space-y-6 pb-12 border-b border-border/60">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              <Stack size={16} className="text-foreground" />
-              <span>Architectural Principle 02</span>
-            </div>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Hexagonal Architecture (Ports &amp; Adapters)
-            </Typography.H2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sm sm:text-base text-muted-foreground leading-relaxed font-sans">
-            <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-base font-bold text-foreground">
-                Domain Layer Isolation
-              </h3>
-              <p>
-                All transformation logic, calculation algorithms, and data structures are sealed inside <code className="text-xs font-mono text-foreground bg-muted px-1.5 py-0.5 rounded">src/domain/</code>.
-              </p>
-              <p>
-                The domain models contain zero dependencies on React, Next.js, or the DOM. They can be executed headlessly in Node.js, in Web Workers, or in automated unit test suites without mocking framework APIs.
-              </p>
-            </div>
-            <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-base font-bold text-foreground">
-                Standardized UI Atomization
-              </h3>
-              <p>
-                UI components adhere to an atomic design system located in <code className="text-xs font-mono text-foreground bg-muted px-1.5 py-0.5 rounded">src/shared/components/ui/</code>.
-              </p>
-              <p>
-                Every tool implementation reuses unified inputs, sliders, upload drop zones, and download triggers. This ensures cross-tool visual coherence, accessible keyboard navigation, and consistent state management across all 8 supported languages.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 3: Technical Specifications Matrix */}
-        <section className="space-y-6">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              <Code size={16} className="text-foreground" />
-              <span>Technical Ledger</span>
-            </div>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Technology Stack &amp; Implementation Details
-            </Typography.H2>
-          </div>
-
-          <div className="divide-y divide-border/60">
-            {STACK_SPEC.map((item) => (
-              <div
-                key={item.category}
-                className="py-4 first:pt-2 last:pb-2 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline text-xs font-mono"
-              >
-                <span className="sm:col-span-3 text-muted-foreground uppercase tracking-wider">
-                  {item.category}
-                </span>
-                <span className="sm:col-span-4 font-bold text-foreground">
-                  {item.tech}
-                </span>
-                <span className="sm:col-span-5 text-muted-foreground font-sans text-xs">
-                  {item.detail}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
+        </div>
       </Container>
     </main>
   );

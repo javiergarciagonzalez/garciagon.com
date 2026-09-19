@@ -19,7 +19,7 @@ export const PROFILE = {
   title: "Senior Full Stack Engineer",
   roleHeadline: "TypeScript, React & Node.js",
   location: "Seville, Spain",
-  workMode: "Remote (Spain)",
+  workMode: "Remote",
   email: "javier@garciagon.com",
   socials: {
     github: "https://github.com/javiergarciagonzalez",

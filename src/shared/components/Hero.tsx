@@ -54,8 +54,8 @@ export function Hero() {
           <FadeIn duration={650} className="lg:col-span-7 space-y-8">
             {/* Name & Headline */}
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-                <MapPin size={14} className="text-foreground" />
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground px-2.5 py-1 rounded-full border border-border/80 bg-surface/50">
+                <MapPin size={14} className="text-amber-500 shrink-0" />
                 <span>Seville, Spain &middot; Remote Engineer</span>
               </div>
               <Typography.H1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
@@ -198,22 +198,26 @@ export function Hero() {
                       />
                     </div>
 
-                    {/* Live Status Pill */}
+                    {/* Live Status Pill with Ambient Emerald Bloom */}
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/95 px-3.5 py-1.5 shadow-md backdrop-blur-sm text-xs font-mono text-foreground">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                        </span>
-                        <span>Autodesk &middot; Fusion CI team</span>
+                      <div className="relative">
+                        {/* Faint breathing emerald radial bloom */}
+                        <div className="absolute -inset-1 rounded-full bg-emerald-500/20 blur-md dark:bg-emerald-400/25 animate-pulse" />
+                        <div className="relative inline-flex items-center gap-2 rounded-full border border-border bg-background/95 px-3.5 py-1.5 shadow-md backdrop-blur-sm text-xs font-mono text-foreground">
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
+                          </span>
+                          <span>Autodesk &middot; Fusion CI team</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* 2. Code Console Layer */}
+                {/* 2. Code Console Layer with Refined IDE Syntax Colors */}
                 <div
-                  className={`absolute inset-0 flex flex-col rounded-2xl border border-border bg-surface/90 shadow-xl backdrop-blur-md overflow-hidden font-mono text-xs transition-opacity duration-200 ease-out ${
+                  className={`absolute inset-0 flex flex-col rounded-2xl border border-border bg-surface/95 shadow-xl backdrop-blur-md overflow-hidden font-mono text-xs transition-opacity duration-200 ease-out ${
                     viewMode === "config"
                       ? "opacity-100 pointer-events-auto"
                       : "opacity-0 pointer-events-none"
@@ -239,7 +243,7 @@ export function Hero() {
                       {copied ? (
                         <>
                           <Check size={13} className="text-emerald-500" />
-                          <span className="text-emerald-500">Copied</span>
+                          <span className="text-emerald-500 font-medium">Copied</span>
                         </>
                       ) : (
                         <>
@@ -250,29 +254,29 @@ export function Hero() {
                     </button>
                   </div>
 
-                  {/* Code Editor Body */}
-                  <div className="p-4 text-xs leading-relaxed overflow-hidden text-muted-foreground select-text flex-1 flex flex-col justify-center">
+                  {/* Code Editor Body - Sublime/Tokyo Night Style Syntax Palette */}
+                  <div className="p-4 text-xs leading-relaxed overflow-hidden text-muted-foreground select-text flex-1 flex flex-col justify-center bg-surface/50">
                     <pre className="font-mono">
                       <code>
-                        <span className="text-muted-foreground/60">{"// system.config.ts"}</span>
+                        <span className="text-muted-foreground/60 italic">{"// system.config.ts"}</span>
                         {"\n"}
-                        <span className="text-foreground font-semibold">export const</span>{" "}
-                        <span className="text-foreground">engineer</span> = &#123;
-                        {"\n"}  name: <span className="text-foreground">&quot;Javier García González&quot;</span>,
-                        {"\n"}  role: <span className="text-foreground">&quot;Sr. Full Stack Engineer&quot;</span>,
-                        {"\n"}  roots: [<span className="text-foreground">&quot;Frontend Craft&quot;</span>, <span className="text-foreground">&quot;UI Systems&quot;</span>],
-                        {"\n"}  stack: &#123;
-                        {"\n"}    core: [<span className="text-foreground">&quot;TypeScript&quot;</span>, <span className="text-foreground">&quot;React&quot;</span>, <span className="text-foreground">&quot;Node.js&quot;</span>],
-                        {"\n"}    cloud: [<span className="text-foreground">&quot;Azure Functions&quot;</span>, <span className="text-foreground">&quot;AKS&quot;</span>, <span className="text-foreground">&quot;Vault&quot;</span>],
-                        {"\n"}    quality: [<span className="text-foreground">&quot;Playwright&quot;</span>, <span className="text-foreground">&quot;CI/CD&quot;</span>],
-                        {"\n"}    aiWorkflow: [<span className="text-foreground">&quot;Claude Code&quot;</span>, <span className="text-foreground">&quot;Cursor AI&quot;</span>],
+                        <span className="text-purple-600 dark:text-purple-400 font-semibold">export const</span>{" "}
+                        <span className="text-blue-600 dark:text-sky-400 font-medium">engineer</span> = &#123;
+                        {"\n"}  <span className="text-foreground/90">name</span>: <span className="text-emerald-600 dark:text-emerald-400">&quot;Javier García González&quot;</span>,
+                        {"\n"}  <span className="text-foreground/90">role</span>: <span className="text-emerald-600 dark:text-emerald-400">&quot;Sr. Full Stack Engineer&quot;</span>,
+                        {"\n"}  <span className="text-foreground/90">roots</span>: [<span className="text-emerald-600 dark:text-emerald-400">&quot;Frontend Craft&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;UI Systems&quot;</span>],
+                        {"\n"}  <span className="text-foreground/90">stack</span>: &#123;
+                        {"\n"}    <span className="text-foreground/80">core</span>: [<span className="text-emerald-600 dark:text-emerald-400">&quot;TypeScript&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;React&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;Node.js&quot;</span>],
+                        {"\n"}    <span className="text-foreground/80">cloud</span>: [<span className="text-emerald-600 dark:text-emerald-400">&quot;Azure Functions&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;AKS&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;Vault&quot;</span>],
+                        {"\n"}    <span className="text-foreground/80">quality</span>: [<span className="text-emerald-600 dark:text-emerald-400">&quot;Playwright&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;CI/CD&quot;</span>],
+                        {"\n"}    <span className="text-foreground/80">aiWorkflow</span>: [<span className="text-emerald-600 dark:text-emerald-400">&quot;Claude Code&quot;</span>, <span className="text-emerald-600 dark:text-emerald-400">&quot;Cursor AI&quot;</span>],
                         {"\n"}  &#125;,
-                        {"\n"}  current: &#123;
-                        {"\n"}    company: <span className="text-foreground">&quot;Autodesk&quot;</span>,
-                        {"\n"}    team: <span className="text-foreground">&quot;Fusion CI&quot;</span>,
-                        {"\n"}    scope: <span className="text-foreground">&quot;Internal platforms &amp; tooling&quot;</span>,
+                        {"\n"}  <span className="text-foreground/90">current</span>: &#123;
+                        {"\n"}    <span className="text-foreground/80">company</span>: <span className="text-emerald-600 dark:text-emerald-400">&quot;Autodesk&quot;</span>,
+                        {"\n"}    <span className="text-foreground/80">team</span>: <span className="text-emerald-600 dark:text-emerald-400">&quot;Fusion CI&quot;</span>,
+                        {"\n"}    <span className="text-foreground/80">scope</span>: <span className="text-emerald-600 dark:text-emerald-400">&quot;Internal platforms &amp; tooling&quot;</span>,
                         {"\n"}  &#125;,
-                        {"\n"}&#125; <span className="text-foreground font-semibold">as const</span>;
+                        {"\n"}&#125; <span className="text-purple-600 dark:text-purple-400 font-semibold">as const</span>;
                       </code>
                     </pre>
                   </div>

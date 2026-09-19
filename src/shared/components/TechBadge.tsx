@@ -21,13 +21,28 @@ export function TechBadge({
   size = "md",
 }: TechBadgeProps) {
   const tech = findTechDefinition(name);
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  // Subtle brand tint & border glow on hover
+  const hoverStyle: React.CSSProperties =
+    tech && isHovered
+      ? {
+          borderColor: `${tech.color}40`,
+          backgroundColor: `${tech.color}14`,
+          boxShadow: `0 0 12px ${tech.color}20`,
+        }
+      : {};
 
   return (
     <span
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={hoverStyle}
       className={cn(
-        "group/tag inline-flex items-center rounded-md font-mono border border-border/60 transition-all duration-200 hover:border-border-highlight hover:bg-surface hover:-translate-y-0.5",
+        "group/tag inline-flex items-center rounded-md font-mono border border-border/60 transition-all duration-200 hover:-translate-y-0.5",
         size === "sm" ? "px-2 py-0.5 text-xs gap-1.5" : "px-2.5 py-1 text-xs gap-2",
-        "bg-muted/60 text-foreground/90",
+        !isHovered && "bg-muted/60 hover:bg-surface hover:border-border-highlight",
+        "text-foreground/90 cursor-default select-none",
         className
       )}
     >
@@ -36,10 +51,11 @@ export function TechBadge({
           role="img"
           viewBox={tech.viewBox || "0 0 24 24"}
           className={cn(
-            "shrink-0 transition-colors duration-200 fill-current text-muted-foreground group-hover/tag:text-[var(--hover-color)]",
-            size === "sm" ? "h-3 w-3" : "h-3.5 w-3.5"
+            "shrink-0 transition-colors duration-200 fill-current",
+            size === "sm" ? "h-3 w-3" : "h-3.5 w-3.5",
+            isHovered ? "text-[var(--brand-color)]" : "text-muted-foreground"
           )}
-          style={{ "--hover-color": tech.color } as React.CSSProperties}
+          style={{ "--brand-color": tech.color } as React.CSSProperties}
           aria-hidden="true"
         >
           <path d={tech.path} />
@@ -52,7 +68,14 @@ export function TechBadge({
           )}
         />
       ) : null}
-      <span className="leading-none">{name}</span>
+      <span
+        className={cn(
+          "leading-none transition-colors duration-200",
+          isHovered ? "text-foreground" : "text-foreground/90"
+        )}
+      >
+        {name}
+      </span>
     </span>
   );
 }

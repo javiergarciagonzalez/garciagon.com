@@ -46,14 +46,19 @@ export default function HomeLabShowcasePage() {
         {/* Project Header */}
         <div className="space-y-6 max-w-3xl pb-10 border-b border-border/60">
           <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-            <span className="h-2 w-2 rounded-full bg-sky-500" />
+            <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.7)]" />
             <span>Self-Hosted Production &middot; 24/7 Bare Metal</span>
           </div>
 
-          <div className="space-y-2">
-            <Typography.H1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-              Self-Hosted NAS &amp; Private Cloud
-            </Typography.H1>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-sky-500 shrink-0 shadow-xs">
+                <HardDrives size={22} />
+              </div>
+              <Typography.H1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+                Self-Hosted NAS &amp; Private Cloud
+              </Typography.H1>
+            </div>
             <p className="text-xl sm:text-2xl font-semibold text-foreground/90 tracking-tight">
               Bare-metal infrastructure automated 100% via Ansible playbooks.
             </p>
@@ -66,122 +71,104 @@ export default function HomeLabShowcasePage() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Button
               variant="primary"
-              href="/#contact"
+              href="https://github.com/javiergarciagonzalez"
+              external
+              rightIcon={<Terminal size={16} />}
             >
-              Discuss Infrastructure &amp; Systems
-            </Button>
-            <Button
-              variant="secondary"
-              href="/#experience"
-            >
-              View Work Experience
+              Infrastructure Playbooks
             </Button>
           </div>
         </div>
 
-        {/* Section 1: Infrastructure as Code */}
-        <section className="space-y-6 pb-12 border-b border-border/60">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              <Terminal size={16} className="text-sky-500" />
-              <span>Architectural Principle 01</span>
-            </div>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Codified Automation &amp; Zero Configuration Drift
-            </Typography.H2>
+        {/* Architecture Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Main Architectural Pillars (8 cols) */}
+          <div className="lg:col-span-8 space-y-12">
+            {/* Pillar 1: Declarative IaC */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Terminal size={20} className="text-sky-500" />
+                <Typography.H3 className="text-xl font-bold">
+                  100% Declarative Automation via Ansible
+                </Typography.H3>
+              </div>
+              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm sm:text-base font-sans">
+                <p>
+                  Zero manual SSH snowflake configuration. The entire machine configuration—from disk partition layouts, ZFS pool creation, and Docker compose configurations to firewall rules—is authored in version-controlled Ansible playbooks.
+                </p>
+                <p>
+                  A clean server re-provision from bare metal takes under 15 minutes by executing a single idempotency-tested playbook against the target node.
+                </p>
+              </div>
+            </section>
+
+            {/* Pillar 2: Resilient Storage */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <HardDrives size={20} className="text-emerald-500" />
+                <Typography.H3 className="text-xl font-bold">
+                  ZFS RAIDZ Data Integrity &amp; Tiered Storage
+                </Typography.H3>
+              </div>
+              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm sm:text-base font-sans">
+                <p>
+                  Storage is configured with ZFS to prevent silent data corruption (bit rot). Checksums verify all read/write cycles, with scheduled monthly scrubs and automated snapshot schedules.
+                </p>
+                <p>
+                  Critical directories take advantage of NVMe caching and 3-2-1 backup policies using Kopia: end-to-end encrypted, content-addressed snapshots deduplicated and synced daily to remote cold object storage.
+                </p>
+              </div>
+            </section>
+
+            {/* Pillar 3: Zero-Trust Remote Access */}
+            <section className="space-y-4">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={20} className="text-amber-500" />
+                <Typography.H3 className="text-xl font-bold">
+                  Zero Inbound Port Exposure (Tailscale &amp; Cloudflare)
+                </Typography.H3>
+              </div>
+              <div className="space-y-3 text-muted-foreground leading-relaxed text-sm sm:text-base font-sans">
+                <p>
+                  The host has 0 open inbound ports on the WAN router. Remote administrative access uses an encrypted Tailscale WireGuard mesh with ACL restrictions and SSH key enforcement.
+                </p>
+                <p>
+                  Public-facing testing webhooks pass strictly through outbound Cloudflare Tunnels backed by Authelia 2FA authentication, preventing direct IP exposure and automated port scanners.
+                </p>
+              </div>
+            </section>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sm sm:text-base text-muted-foreground leading-relaxed font-sans">
-            <div className="lg:col-span-6 space-y-4">
-              <p>
-                Every service, container network, and system configuration is defined in the private <code className="text-xs font-mono text-foreground bg-muted px-1.5 py-0.5 rounded">nas-services</code> repository containing over 40 modular Ansible roles.
-              </p>
-              <p>
-                No manual SSH tinkering or unrecorded system edits exist on the machine. Running the main playbook ensures complete idempotency—rebuilding the host from a clean OS install to full operational capability in minutes.
-              </p>
-            </div>
-            <div className="lg:col-span-6 space-y-4">
-              <p>
-                Sensitive keys, credentials, and Tailscale pre-auth tokens are encrypted at rest using <strong className="text-foreground font-semibold">Ansible Vault</strong>, ensuring that infrastructure code can be safely versioned and audited.
-              </p>
-              <div className="p-4 rounded-lg bg-muted/50 border border-border/60 font-mono text-xs text-foreground/80 space-y-1">
-                <span className="text-muted-foreground block">{"// Deployment Command:"}</span>
-                <p>$ ansible-playbook -i inventory.ini site.yml --vault-password-file=.vault_pass</p>
-                <p className="text-sky-600 dark:text-sky-400">Status: 42 roles executed &middot; 0 failed</p>
+          {/* Right Column: Roles Ledger (4 cols) */}
+          <div className="lg:col-span-4">
+            <div className="rounded-2xl border border-border bg-surface p-6 space-y-6 sticky top-24">
+              <div className="space-y-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                  Ansible Roles
+                </span>
+                <h4 className="text-lg font-bold text-foreground">
+                  Automated Modules
+                </h4>
+              </div>
+
+              <div className="divide-y divide-border/60">
+                {ANSIBLE_ROLES.map((role, idx) => (
+                  <div key={idx} className="py-2.5 space-y-1">
+                    <div className="flex items-center justify-between text-xs font-mono">
+                      <span className="text-foreground font-semibold">{role.name}</span>
+                      <span className="text-muted-foreground text-xs px-1.5 py-0.5 rounded-sm bg-muted/60">
+                        {role.scope}
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground font-sans">
+                      {role.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Section 2: Zero-Trust & ZFS Storage */}
-        <section className="space-y-6 pb-12 border-b border-border/60">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              <ShieldCheck size={16} className="text-emerald-500" />
-              <span>Architectural Principle 02</span>
-            </div>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Zero-Trust Network Mesh &amp; ZFS Data Integrity
-            </Typography.H2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-sm sm:text-base text-muted-foreground leading-relaxed font-sans">
-            <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-base font-bold text-foreground">
-                Network Isolation Without Inbound Ports
-              </h3>
-              <p>
-                The server operates with zero public open router ports. All remote access is routed through an encrypted <strong className="text-foreground font-semibold">Tailscale WireGuard mesh network</strong>.
-              </p>
-              <p>
-                Exposed webhooks and web interfaces pass through Cloudflare Tunnels protected by <strong className="text-foreground font-semibold">Authelia MFA</strong> (multi-factor authentication) and Caddy TLS reverse proxying.
-              </p>
-            </div>
-            <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-base font-bold text-foreground">
-                ZFS RAIDZ &amp; Content-Addressed Backups
-              </h3>
-              <p>
-                Storage pools utilize ZFS RAIDZ with automated copy-on-write integrity, periodic scrub operations, and automated snapshot policies to prevent silent data corruption (bitrot).
-              </p>
-              <p>
-                Disaster recovery is handled by <strong className="text-foreground font-semibold">Kopia</strong>: snapshots are encrypted client-side and deduplicated before transmission to off-site cloud storage.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 3: Ansible Roles Registry */}
-        <section className="space-y-6">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              <HardDrives size={16} className="text-foreground" />
-              <span>Infrastructure Ledger</span>
-            </div>
-            <Typography.H2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-              Codified Ansible Roles Registry
-            </Typography.H2>
-          </div>
-
-          <div className="divide-y divide-border/60">
-            {ANSIBLE_ROLES.map((role) => (
-              <div
-                key={role.name}
-                className="py-4 first:pt-2 last:pb-2 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline text-xs font-mono"
-              >
-                <span className="sm:col-span-4 font-bold text-foreground">
-                  {role.name}
-                </span>
-                <span className="sm:col-span-2 text-muted-foreground uppercase tracking-wider">
-                  {role.scope}
-                </span>
-                <span className="sm:col-span-6 text-muted-foreground font-sans text-xs">
-                  {role.desc}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
+        </div>
       </Container>
     </main>
   );
