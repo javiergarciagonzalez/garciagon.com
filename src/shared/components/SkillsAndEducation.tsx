@@ -95,7 +95,7 @@ export function SkillsAndEducation() {
           <div className="divide-y divide-border/60">
             {EDUCATION_HISTORY.map((edu, index) => (
               <FadeIn key={edu.id} delay={index * 0.08}>
-                <article className="py-8 first:pt-2 last:pb-0">
+                <article className="py-8 sm:py-10">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                   {/* Left Column: Degree & University (5 cols) */}
                   <div className="lg:col-span-5 space-y-1.5">

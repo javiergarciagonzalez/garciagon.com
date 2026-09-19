@@ -23,12 +23,18 @@ export function SpotlightCard({
   spotlightColor = "rgba(125, 125, 125, 0.08)",
   borderColor = "rgba(160, 160, 160, 0.25)",
   spotlightSize = 400,
+  id,
+  style,
   ...props
 }: SpotlightCardProps) {
   const mouseX = useMotionValue(-1000);
   const mouseY = useMotionValue(-1000);
 
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent<HTMLDivElement>) {
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -44,21 +50,24 @@ export function SpotlightCard({
 
   return (
     <div
+      id={id}
+      style={style}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "group/spotlight relative rounded-2xl border border-border/70 bg-surface/50 p-6 sm:p-8 transition-all duration-300 hover:shadow-lg",
-        className
+        "group/spotlight relative rounded-2xl border border-border/70 bg-surface/50 p-6 sm:p-8 transition-colors duration-300 hover:border-border-highlight",
+        className,
       )}
       {...props}
     >
       {/* Animated Glowing Border Follower */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100"
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 mb-0"
         style={{
           background: borderBackground,
           mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMask:
+            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           maskComposite: "exclude",
           WebkitMaskComposite: "xor",
           padding: "1px",
@@ -68,7 +77,7 @@ export function SpotlightCard({
 
       {/* Animated Surface Spotlight Glow */}
       <motion.div
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 overflow-hidden"
+        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 overflow-hidden mb-0"
         style={{ background }}
         aria-hidden="true"
       />
