@@ -31,16 +31,14 @@ function cn(...inputs: (string | undefined | null | false)[]) {
 }
 
 function MilestoneNode({
-  index,
-  total,
+  threshold,
   progress,
+  nodeRef,
 }: {
-  index: number;
-  total: number;
+  threshold: number;
   progress: MotionValue<number>;
+  nodeRef: (el: HTMLDivElement | null) => void;
 }) {
-  const milestoneProgress = index / (total - 1 || 1);
-  const threshold = index === 0 ? 0.01 : milestoneProgress * 0.96;
   const [isIlluminated, setIsIlluminated] = React.useState(false);
   const isIlluminatedRef = React.useRef(false);
 
@@ -63,6 +61,7 @@ function MilestoneNode({
 
   return (
     <div
+      ref={nodeRef}
       className={cn(
         "absolute -left-4 sm:-left-6 top-[72px] sm:top-[88px] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center h-5 w-5 rounded-full border-2 transition-all duration-300",
         isIlluminated
@@ -85,14 +84,78 @@ function MilestoneNode({
 
 function ChronologicalLedger() {
   const ledgerContainerRef = React.useRef<HTMLDivElement>(null);
+  const railRef = React.useRef<HTMLDivElement>(null);
+  const nodeRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+
+  const [railStyle, setRailStyle] = React.useState<{ top: number; height: number } | null>(null);
+  const [milestoneThresholds, setMilestoneThresholds] = React.useState<number[]>(() =>
+    EXPERIENCES.map((_, i) => (i === 0 ? 0.005 : (i / (EXPERIENCES.length - 1)) * 0.96))
+  );
+
+  const updateMeasurements = React.useCallback(() => {
+    const container = ledgerContainerRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const nodeElements = nodeRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (nodeElements.length < 2) return;
+
+    const firstRect = nodeElements[0].getBoundingClientRect();
+    const lastRect = nodeElements[nodeElements.length - 1].getBoundingClientRect();
+
+    const firstCenterY = firstRect.top + firstRect.height / 2 - containerRect.top;
+    const lastCenterY = lastRect.top + lastRect.height / 2 - containerRect.top;
+    const totalSpan = lastCenterY - firstCenterY;
+
+    if (totalSpan <= 0) return;
+
+    setRailStyle({
+      top: Math.round(firstCenterY),
+      height: Math.round(totalSpan),
+    });
+
+    const radius = 10;
+    const thresholds = nodeElements.map((el, i) => {
+      if (i === 0) return 0.005;
+      const isLast = i === nodeElements.length - 1;
+      const rect = el.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2 - containerRect.top;
+      const distFromRailTop = centerY - firstCenterY;
+      // Enlighten as soon as the gradient tip reaches the top edge of the dot
+      const touchDistance = isLast
+        ? distFromRailTop - radius - 8
+        : distFromRailTop - radius - 2;
+      return Math.max(0, Math.min(1, touchDistance / totalSpan));
+    });
+
+    setMilestoneThresholds(thresholds);
+  }, []);
+
+  React.useEffect(() => {
+    updateMeasurements();
+
+    const ro = new ResizeObserver(() => {
+      updateMeasurements();
+    });
+
+    if (ledgerContainerRef.current) {
+      ro.observe(ledgerContainerRef.current);
+    }
+    window.addEventListener("resize", updateMeasurements);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateMeasurements);
+    };
+  }, [updateMeasurements]);
 
   const { scrollYProgress } = useScroll({
-    target: ledgerContainerRef,
-    offset: ["start 75%", "end 25%"],
+    target: railRef,
+    offset: ["start 65%", "end 55%"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 300,
+    stiffness: 400,
     damping: 35,
     restDelta: 0.001,
   });
@@ -105,7 +168,16 @@ function ChronologicalLedger() {
     <div ref={ledgerContainerRef} className="relative pl-8 sm:pl-12">
       {/* Track Rail running from the center of the first milestone to the last milestone */}
       <div
-        className="absolute left-[15px] sm:left-[23px] top-[72px] sm:top-[88px] bottom-[72px] sm:bottom-[88px] w-[2px]"
+        ref={railRef}
+        className={cn(
+          "absolute left-[15px] sm:left-[23px] w-[2px]",
+          !railStyle && "top-[72px] sm:top-[88px] bottom-[72px] sm:bottom-[88px]"
+        )}
+        style={
+          railStyle
+            ? { top: `${railStyle.top}px`, height: `${railStyle.height}px` }
+            : undefined
+        }
         aria-hidden="true"
       >
         {/* Background Passive Track Line */}
@@ -129,9 +201,11 @@ function ChronologicalLedger() {
               <article className="py-12 sm:py-16 transition-colors group relative">
                 {/* Interactive Chronological Milestone Node */}
                 <MilestoneNode
-                  index={index}
-                  total={EXPERIENCES.length}
+                  threshold={milestoneThresholds[index] ?? 0.5}
                   progress={smoothProgress}
+                  nodeRef={(el) => {
+                    nodeRefs.current[index] = el;
+                  }}
                 />
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
