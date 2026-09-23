@@ -62,7 +62,7 @@ export function SpotlightCard({
     >
       {/* Animated Glowing Border Follower */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 mb-0"
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 !m-0 !mt-0"
         style={{
           background: borderBackground,
           mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -77,13 +77,13 @@ export function SpotlightCard({
 
       {/* Animated Surface Spotlight Glow */}
       <motion.div
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 overflow-hidden mb-0"
+        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/spotlight:opacity-100 overflow-hidden !m-0 !mt-0"
         style={{ background }}
         aria-hidden="true"
       />
 
       {/* Card Content Layer */}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 !mt-0">{children}</div>
     </div>
   );
 }

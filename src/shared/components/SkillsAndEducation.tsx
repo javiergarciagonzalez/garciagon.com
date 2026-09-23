@@ -45,24 +45,26 @@ export function SkillsAndEducation() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {SKILL_CATEGORIES.map((cat: SkillCategory, index: number) => (
               <FadeIn key={cat.id} delay={index * 0.08}>
-                <SpotlightCard className="h-full space-y-4 p-6 sm:p-7">
-                  <div>
-                    <h3 className="text-lg font-bold tracking-tight text-foreground">
-                      {cat.name}
-                    </h3>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      {cat.headline}
-                    </p>
-                  </div>
+                <SpotlightCard className="h-full p-6 sm:p-7">
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-lg font-bold tracking-tight text-foreground">
+                        {cat.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {cat.headline}
+                      </p>
+                    </div>
 
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {cat.skills.map((skill) => (
-                      <TechBadge
-                        key={skill.name}
-                        name={skill.name}
-                        highlight={skill.highlight}
-                      />
-                    ))}
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {cat.skills.map((skill) => (
+                        <TechBadge
+                          key={skill.name}
+                          name={skill.name}
+                          highlight={skill.highlight}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </SpotlightCard>
               </FadeIn>
