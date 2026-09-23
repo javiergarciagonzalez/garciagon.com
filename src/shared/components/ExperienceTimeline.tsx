@@ -66,7 +66,7 @@ function MilestoneNode({
       className={cn(
         "absolute -left-4 sm:-left-6 top-[72px] sm:top-[88px] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center h-5 w-5 rounded-full border-2 transition-all duration-300",
         isIlluminated
-          ? "border-emerald-500 bg-background shadow-[0_0_10px_rgba(16,185,129,0.7)] scale-110"
+          ? "border-blue-600 bg-background shadow-[0_0_12px_rgba(37,99,235,0.7)] scale-110"
           : "border-border bg-muted/90"
       )}
       aria-hidden="true"
@@ -75,7 +75,7 @@ function MilestoneNode({
         className={cn(
           "h-2 w-2 rounded-full transition-colors duration-300",
           isIlluminated
-            ? "bg-emerald-500 animate-pulse"
+            ? "bg-blue-600 animate-pulse shadow-[0_0_8px_rgba(37,99,235,0.9)]"
             : "bg-muted-foreground/40"
         )}
       />
@@ -113,7 +113,7 @@ function ChronologicalLedger() {
 
         {/* Glowing Laser Tracer Line Following Viewport Scroll */}
         <motion.div
-          className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-emerald-500 via-sky-500 to-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]"
+          className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-blue-600 via-sky-400 to-blue-700 shadow-[0_0_8px_rgba(37,99,235,0.8)]"
           style={{
             height: laserHeight,
           }}
@@ -155,8 +155,8 @@ function ChronologicalLedger() {
                             {exp.company}
                           </span>
                           {isCurrent && (
-                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0">
-                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 shrink-0">
+                              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse shadow-[0_0_6px_rgba(37,99,235,0.8)]" />
                               Current
                             </span>
                           )}
@@ -301,14 +301,14 @@ export function ExperienceTimeline() {
           /* ------------------------------------------------------------- */
           <FadeIn>
             <SpotlightCard
-              spotlightColor="rgba(16, 185, 129, 0.08)"
-              borderColor="rgba(52, 211, 153, 0.3)"
+              spotlightColor="rgba(37, 99, 235, 0.08)"
+              borderColor="rgba(59, 130, 246, 0.3)"
               className="rounded-2xl border border-border bg-[#0d1117] text-zinc-300 p-6 sm:p-8 font-mono"
             >
               <div className="space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 pb-4 text-xs">
                   <div className="flex items-center gap-2 text-zinc-400">
-                    <Terminal size={16} className="text-emerald-400" />
+                    <Terminal size={16} className="text-blue-400" />
                     <span>git log --graph --all --oneline</span>
                   </div>
                   <div className="flex items-center gap-4 text-xs text-zinc-500">
@@ -330,23 +330,23 @@ export function ExperienceTimeline() {
                         onClick={() => setActiveCommitId(exp.id)}
                         aria-pressed={isSelected}
                         className={cn(
-                          "w-full text-left rounded-xl p-4 transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500",
+                          "w-full text-left rounded-xl p-4 transition-all duration-200 cursor-pointer border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
                           isSelected
-                            ? "border-emerald-500/80 bg-zinc-900/90 shadow-lg shadow-emerald-500/5"
+                            ? "border-blue-500/80 bg-zinc-900/90 shadow-lg shadow-blue-500/5"
                             : "border-zinc-800/80 bg-zinc-900/40 hover:border-zinc-700 hover:bg-zinc-900/70"
                         )}
                       >
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <div className="flex items-center gap-2.5">
-                            <span className="text-emerald-400 font-bold">*</span>
+                            <span className="text-blue-400 font-bold">*</span>
                             <span className="text-zinc-400 font-mono text-xs">{commitHash}</span>
                             <span className="font-semibold text-zinc-100">{exp.role}</span>
                             <span className="text-zinc-500">@</span>
-                            <span className="text-emerald-300">{exp.company}</span>
+                            <span className="text-blue-300">{exp.company}</span>
                           </div>
                           <div className="flex items-center gap-2 text-xs text-zinc-500 font-mono">
                             {isHead && (
-                              <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                              <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
                                 HEAD
                               </span>
                             )}
