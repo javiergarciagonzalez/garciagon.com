@@ -7,10 +7,11 @@ export interface ProjectItem {
   description: string;
   highlights: string[];
   tags: string[];
-  status: "Live" | "Self-Hosted";
+  status: "Live" | "Self-Hosted" | "Open Source";
   logo?: string;
-  iconName?: "HardDrives" | "Cpu" | "Terminal";
+  iconName?: "HardDrives" | "Cpu" | "Terminal" | "Robot";
   externalLink?: string;
+  externalLinkText?: string;
   showcaseUrl: string;
   featured?: boolean;
 }
@@ -35,6 +36,28 @@ export const PROJECTS: ProjectItem[] = [
       "Fast Core Web Vitals with headless pSEO and multi-locale routing across 8 languages.",
     ],
     tags: ["Next.js", "TypeScript", "WebAssembly (WASM)", "Hexagonal Architecture", "Tailwind CSS", "pSEO"],
+  },
+  {
+    id: "agy-on-telegram",
+    slug: "agy-on-telegram",
+    title: "AGY on Telegram",
+    subtitle: "Fault-tolerant Telegram gateway for Google Antigravity CLI with voice & vision",
+    badge: "Open Source & Local AI",
+    status: "Open Source",
+    iconName: "Robot",
+    externalLink: "https://github.com/javiergarciagonzalez/agy-on-telegram",
+    externalLinkText: "GitHub Repo",
+    showcaseUrl: "/projects/agy-on-telegram",
+    featured: true,
+    description:
+      "A robust, cross-platform Telegram bot gateway bridging Google Antigravity CLI (AGY) with mobile devices. Features Whisper audio transcription with intent routing, multimodal vision inspection, and fault-tolerant auto-retries.",
+    highlights: [
+      "Multi-turn session persistence with clean session scoping (/new) and explicit context continuation (/c).",
+      "Local Whisper HTTP integration transcribing voice memos with zero-click intent routing or inline interactive buttons.",
+      "Fault-tolerant execution engine featuring 3 automatic retries with progressive backoff and real-time status updates.",
+      "Cross-platform architecture supporting Linux (systemd daemon) and macOS (LaunchAgent) with user-scoped whitelisting.",
+    ],
+    tags: ["Python", "Telegram Bot API", "Google Antigravity (AGY)", "Whisper AI", "Linux / macOS", "Systemd / Launchd"],
   },
   {
     id: "home-lab",

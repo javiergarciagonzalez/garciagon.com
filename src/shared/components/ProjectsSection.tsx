@@ -16,6 +16,7 @@ import {
   HardDrives,
   Cpu,
   Terminal,
+  Robot,
 } from "@phosphor-icons/react";
 
 export function ProjectsSection() {
@@ -68,6 +69,8 @@ export function ProjectsSection() {
                                 <HardDrives size={18} />
                               ) : project.iconName === "Cpu" ? (
                                 <Cpu size={18} />
+                              ) : project.iconName === "Robot" ? (
+                                <Robot size={18} className="text-purple-400" />
                               ) : (
                                 <Terminal size={18} />
                               )}
@@ -84,6 +87,9 @@ export function ProjectsSection() {
                             )}
                             {project.status === "Self-Hosted" && (
                               <span className="h-1.5 w-1.5 rounded-full bg-sky-500 shadow-[0_0_6px_rgba(14,165,233,0.6)]" />
+                            )}
+                            {project.status === "Open Source" && (
+                              <span className="h-1.5 w-1.5 rounded-full bg-purple-500 shadow-[0_0_6px_rgba(168,85,247,0.6)]" />
                             )}
                             {project.status}
                           </span>
@@ -116,7 +122,7 @@ export function ProjectsSection() {
                             external
                             rightIcon={<ArrowSquareOut size={14} />}
                           >
-                            Visit Live
+                            {project.externalLinkText || (project.externalLink.includes("github.com") ? "View Repository" : "Visit Live")}
                           </Button>
                         )}
                       </div>
