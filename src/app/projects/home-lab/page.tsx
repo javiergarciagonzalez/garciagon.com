@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/shared/components/Container";
 import { Typography } from "@/shared/components/Typography";
-import { Button } from "@/shared/components/Button";
 import {
   ArrowLeft,
   Terminal,
@@ -67,17 +66,6 @@ export default function HomeLabShowcasePage() {
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-sans">
             A dedicated, 24/7 low-power private cloud serving as personal production storage, CI runner host, and systems playground. Built on the principle that senior software engineering competence extends through container virtualization, network routing, and bare-metal hardware.
           </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <Button
-              variant="primary"
-              href="https://github.com/javiergarciagonzalez"
-              external
-              rightIcon={<Terminal size={16} />}
-            >
-              Infrastructure Playbooks
-            </Button>
-          </div>
         </div>
 
         {/* Architecture Grid */}
